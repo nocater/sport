@@ -101,7 +101,8 @@
     </dependency>
   </dependencies>
   <build>
-  	<!-- Add Hot Swapping DEVTOOLS-->
+    <plugins>
+      <!-- Add Hot Swapping DEVTOOLS-->
       <plugin>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-maven-plugin</artifactId>
@@ -141,8 +142,6 @@
 		</configuration>  
 	  </plugin>
       <!-- end -->
-      
-    <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <!-- <version>2.3.2</version> -->
