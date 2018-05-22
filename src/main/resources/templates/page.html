@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript">
+	function changeRecord(num){
+		document.getElementById('pageNum').value = num;
+		document.getElementById('query').submit();
+	}
+	function changePageSize(num){
+		document.getElementById('pageSize').value = num;
+	}
+</script>
+<div th:fragment="page" th:object="${page}" style="text-align: center">
+<ul class="pagination">
+	<input type="hidden" id="pageNum" name="pageNum" th:value="*{pageNum}">
+	<input type="hidden" id="pageSize" name="pageSize" th:value="*{pageSize}">
+	<li><a onclick="changeRecord(this.target)" th:target="*{pageNum-1}">上页</a></li>
+	<li><a th:text="*{pageNum}"></a></li>
+	<li><a onclick="changeRecord(this.target)" th:target="*{pageNum+1}">下页</a></li>
+	<!-- <input type="text" onchange="changePageSize(this.value)" th:value="*{pageSize}"> -->
+</ul>
+</div>
+</html>

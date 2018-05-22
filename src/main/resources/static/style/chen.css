@@ -1,0 +1,209 @@
+@CHARSET "UTF-8";
+body{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.428571429;
+        background-image: url("/sport/images/body.jpg");
+        background-color: black;
+      }
+     .banner{
+        height:90px;
+        width:100%;
+        margin:auto;
+        margin-top:0;
+        background-image:url("/sport/images/header.jpg");
+        background-size:100%;
+        border-radius:0 0 10px 10px;
+      }
+     .title{
+        font-family:sans-serif;
+        font-weight:bold;
+        color:white;
+        margin:auto;
+        padding-top:20px;
+        padding-left:40px;
+        text-shadow: black 5px 3px 3px;
+      }
+      .left{
+        float:left;
+        display:inline;
+        margin-right:200px;
+      }
+      .right{
+        padding-top:30px;
+        font-size:14px;
+        float:left;
+        display:inline;
+        font-weight:bold;
+      }
+      .glyphicon{
+        font-size:;
+      }
+      .right a{
+        color:#999;
+      }
+      .right a:hover{
+        color:hsl(0, 0%, 50%);
+        text-decoration:none;
+      }
+      .username{
+        margin-right:10px;
+        color:white;
+      }
+      .container{
+        width:920px;
+        height:1000px;
+        background-color:rgba(255, 255, 255, 0.58);
+        margin-top:20px;
+        border-radius:10px;
+      }
+      #navlist{
+        width:920px;
+        margin:auto;
+        margin-top:0;
+      }
+      .nav li{
+        margin-right:20px;
+        font-weight:bold;
+        margin-top:15px;
+      }
+      .nav li a{
+      padding:0px;}
+      .navbar-brand{
+        font-weight:bold;
+        margin-right:20px;
+      }
+      .breadcrumb{
+        width:920px;
+        margin:auto;
+        padding:0;
+        margin-top:20px;
+        margin-bottom: 0;
+        background:none;
+      }
+      .breadcrumb > li + li:before {
+        color: #333;
+        content: "/";
+        padding: 0 5px;
+      }
+      .selection{
+        width:920px;
+        padding-top:20px;
+        padding-left:10px;
+      }
+      .datacorrect{
+        width:890px;
+        margin:auto;
+        margin-top:30px;
+        text-align:center;
+      }
+      .pages{
+        text-align: center;
+      }
+      .pagination{
+        display: inline-block;
+      }
+      .foot{
+        width:100%;
+        height:50px;
+        margin-top:30px;
+      }
+      .cr{
+        text-align:center;
+        color:black;
+      }
+      .add{
+        margin-top:10px;
+      }
+      .taskStatus{
+        width:890px;
+        margin:auto;
+        margin-top:20px;
+      }
+      .url{
+        overflow:hidden;
+        text-overflow:ellipsis;
+      }
+      #operation{
+        color: black;
+      }
+      .col-sm-2{
+        width:200px;
+        padding-left:0px;
+      }
+      .antiAntiSpiderDict{
+        width:443px;
+        margin:auto;
+      }
+      .frequency{
+        width:443px;
+        margin:auto;
+      }
+      .default{
+        height:60px;
+        margin:auto;
+        width:443px;
+        margin-bottom:15px;
+      }
+      .customtask{
+        height:60px;
+        margin:auto;
+        width:443px;
+        margin-bottom:15px;
+      }
+      .source{
+        height:60px;
+        margin:auto;
+        margin-bottom:15px;
+        width:443px;
+      }
+      .collection{
+        width:443px;
+        height:60px;
+        margin:auto;
+        margin-bottom:15px;
+      }
+      .type{
+        height:60px;
+        width:443px;
+        margin:auto;
+        margin-bottom:15px;
+      }
+      .proxy{
+        margin:auto;
+        margin-bottom:5px;
+      }
+      .delay{
+        margin:auto;
+        margin-bottom:5px;
+      }
+      .customheader{
+        margin:auto;
+        width:443px;
+      }
+      .col-sm-10{
+        width:443px;
+        padding-right:0px;
+        padding-left:0px;
+      }
+      .form-control{
+        padding-left:0px;
+        padding-right:0px;
+      }
+      .concurrent{
+        width:443px;
+        height:60px;
+        margin:auto;
+        margin-bottom:15px;
+      }
+      .spiderCode{
+        height:60px;
+        width:443px;
+        margin:auto;
+        margin-bottom:15px;
+      }
+      .spiderCodeType{
+        height:60px;
+        width:443px;
+        margin:auto;
+      }

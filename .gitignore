@@ -13,3 +13,4 @@ src/main/webapp/META-INF/
 # ignore myeclipse workspace
 /.metadata
 /Servers
+/target/
