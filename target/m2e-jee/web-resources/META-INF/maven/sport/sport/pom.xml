@@ -1,0 +1,165 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>sport</groupId>
+  <artifactId>sport</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>sport</name>
+  <description/>
+  <properties>
+    <webVersion>3.1</webVersion>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- Add thymeleaf -->
+    <thymeleaf.version>3.0.5.RELEASE</thymeleaf.version>
+    <thymeleaf-layout-dialect.version>2.2.1</thymeleaf-layout-dialect.version>
+    
+  </properties>
+  <!-- spring boot -->
+  <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.9.RELEASE</version>
+  </parent>
+  
+  <dependencies>
+  	<!-- spring boot -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <!-- Add thymeleaf -->
+    <dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+	</dependency>
+	<!-- Add Hot Swapping DEVTOOLS-->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-devtools</artifactId>
+		<optional>true</optional>
+	</dependency>
+	<!-- Add Mybatis -->
+	<dependency>
+		<groupId>org.mybatis.spring.boot</groupId>
+		<artifactId>mybatis-spring-boot-starter</artifactId>
+		<version>1.1.1</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+     <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    <!-- Add PageHelper -->
+    <dependency>
+        <groupId>com.github.pagehelper</groupId>
+        <artifactId>pagehelper</artifactId>
+        <version>5.0.4</version>
+    </dependency>
+    <!-- ban tomcat -->
+    <dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-tomcat</artifactId>
+		<scope>provided</scope>
+	</dependency>
+	<!-- HttpClient -->
+	<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+	<dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpclient</artifactId>
+	    <!-- <version>4.5.4</version> -->
+	</dependency>
+	<!-- jackjson -->
+	<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+	<dependency>
+	    <groupId>com.google.code.gson</groupId>
+	    <artifactId>gson</artifactId>
+	    <!-- <version>2.8.2</version> -->
+	</dependency>
+    <!-- lombok plugin -->
+    <!-- <dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.16.20</version>
+		<scope>provided</scope>
+	</dependency> -->
+  	<!-- end -->
+  	
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>7.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>javax.servlet.jsp.jstl</artifactId>
+      <version>1.2.2</version>
+    </dependency>
+  </dependencies>
+  <build>
+  	<!-- Add Hot Swapping DEVTOOLS-->
+      <plugin>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-maven-plugin</artifactId>
+		<configuration>
+				<mainClass>package-name.Application</mainClass>
+		</configuration>
+	  </plugin>
+	  <!-- mybatis auto generate -->
+	  <plugin>
+	  	<groupId>org.mybatis.generator</groupId>  
+        <artifactId>mybatis-generator-maven-plugin</artifactId>  
+        <version>1.3.5</version>
+        <dependencies>
+        	<dependency>  
+               <groupId>org.mybatis.generator</groupId>  
+               <artifactId>mybatis-generator-core</artifactId>  
+               <version>1.3.5</version>  
+           	</dependency>  
+		 </dependencies>
+		 <executions>  
+		    <execution>  
+		        <id>Generate MyBatis Artifacts</id>  
+		        <phase>package</phase>  
+		        <goals>  
+		            <goal>generate</goal>  
+		        </goals>  
+		    </execution>  
+		</executions>  
+		<configuration>  
+		    <!--允许移动生成的文件 -->  
+		    <verbose>true</verbose>  
+		    <!-- 是否覆盖 -->  
+		    <overwrite>true</overwrite>  
+		    <!-- 自动生成的配置 -->  
+		    <configurationFile>  
+		        src/main/resources/mybatis-generator.xml</configurationFile>  
+		</configuration>  
+	  </plugin>
+      <!-- end -->
+      
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <!-- <version>2.3.2</version> -->
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <!-- <source>1.7</source>
+          <target>1.7</target> -->
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <!-- <version>2.6</version> -->
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
