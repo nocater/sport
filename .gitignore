@@ -7,6 +7,7 @@
 .settings/
 target/*
 src/test/java/sport/*
+src/main/webapp/META-INF/
 
 
 # ignore myeclipse workspace
