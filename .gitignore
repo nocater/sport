@@ -1,0 +1,14 @@
+# PESPLUS WEB
+*.class
+*.xml
+*.properties
+/sport/.classpath
+/sport/.project
+/sport/.settings/
+/sport/target/*
+/sport/src/test/java/pesplus/*
+
+
+# ignore myeclipse workspace
+/.metadata
+/Servers
