@@ -2,11 +2,11 @@
 *.class
 *.xml
 *.properties
-/sport/.classpath
-/sport/.project
-/sport/.settings/
-/sport/target/*
-/sport/src/test/java/pesplus/*
+.classpath
+.project
+.settings/
+target/*
+src/test/java/sport/*
 
 
 # ignore myeclipse workspace
