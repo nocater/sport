@@ -11,6 +11,10 @@
   </head>
   
   <body>
-    
+    hello,<span th:text="${session.LOGIN_ACCOUNT}"></span>
+    <form action="">
+    	
+    	<div th:replace="~{page}"/>
+    </form>
   </body>
 </html>
