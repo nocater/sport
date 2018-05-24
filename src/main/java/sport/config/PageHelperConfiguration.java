@@ -1,5 +1,6 @@
 package sport.config;
 
+
 import java.util.Properties;
 
 import org.slf4j.Logger;
