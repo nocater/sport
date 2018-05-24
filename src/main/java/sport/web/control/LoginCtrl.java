@@ -26,7 +26,7 @@ public class LoginCtrl {
 						){
 		System.out.println(name+" "+password);
 		session.setAttribute("LOGIN_ACCOUNT", name);
-		return "index";
+		return "nav";
 	}
 	
 	/***
