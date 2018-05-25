@@ -20,36 +20,39 @@ import sport.service.result.Result_Service;
 @Controller
 @RequestMapping(value="/ch")
 public class ResultCtrl {
-//	@Autowired
-//	private ItemService itemService;
-//	@Autowired
+	@Autowired
+	private ItemService itemService;
+	@Autowired
 	private Result_Service resultService;
+//	@Autowired
+//	private StudentService studentService;
+//	@Autowired
+//	private ClasService clasService;
 	
 	@RequestMapping(value="")
 	public String list(ModelMap model, 
 						@RequestParam Integer grade_id,
 						@RequestParam Integer clas_id,
 						@RequestParam(value="pageNum",required=false,defaultValue="1") Integer pageNum,
-						@RequestParam(value = "pageSize", required=false, defaultValue="3") Integer pageSize,
+						@RequestParam(value = "pageSize", required=false, defaultValue="10") Integer pageSize,
 						@RequestParam(value = "message", required=false) String message
 						){
-		grade_id = 36;
-		model.addAttribute("grade_id",grade_id);
-		model.addAttribute("clas_id",clas_id);
+		//获取班级
+//		Clas clas = clasService.querybyid(clas_id);
+		//获取学生
+//		List<Student> students = studentService
+		
 		//获取所有项目
-//		List<Item> items = itemService.getItemsByGrade(grade_id);
-		List<Item> items = new ArrayList<Item>();
-		Item i1 = new Item(); i1.setName("跳高");
-		Item i2 = new Item(); i2.setName("跑步");
-		Item i3 = new Item(); i3.setName("铅球");
-		Item i4 = new Item(); i4.setName("800米男");
-		items.add(i1);items.add(i2);items.add(i3);items.add(i4);
+		List<Item> items = itemService.getItemsByGrade(grade_id);
 		model.addAttribute("items",items);
 		//获取所有成绩
-//		PageHelper.startPage(pageNum, pageSize);
-//		List<Result_> results = resultService.getResult_byClas_id(clas_id);
-//		PageInfo<Result_> page = new PageInfo(results);
-//		model.addAttribute("page",page);
+		PageHelper.startPage(pageNum, pageSize);
+		List<Result_> results = resultService.getResult_byClas_id(clas_id);
+		PageInfo<Result_> page = new PageInfo<Result_>(results);
+		model.addAttribute("page",page);
+		
+		model.addAttribute("grade_id",grade_id);
+		model.addAttribute("clas_id",clas_id);
 		return "/result/resultlist";
 	}
 }

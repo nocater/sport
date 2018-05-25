@@ -26,7 +26,7 @@
 			    	<button type="button" class="btn btn-primary btn-sm">测试</button>
 			    </div> 
 				
-				<form id="query" class="modalbody" action="/school/list" method="POST">
+				<form id="query" class="modalbody" action="/result" method="POST">
 					<input type="hidden" name="grade_id" th:value="${grade_id}">
 					<input type="hidden" name="clas_id" th:value="${clas_id}">
 					<div class="list">
@@ -38,12 +38,13 @@
 							  </tr>
 							</thead>
 							<tbody>
-								<!-- <tr th:each="t:${page.list}">
+								<tr th:each="t:${page.list}">
 									<td><span th:text="${t.student.name}"></span><td>
-									<td><span th:text="${t.student.name}"></span><td>
-								</tr> -->
+									
+									<td><span th:text="${tStat.index}"></span><td>
+								</tr>
 					</table>
-				<!-- <div th:replace="~{page}"/> -->
+				<div th:replace="~{page}"/>
 				</form>
 				
 			</div>
