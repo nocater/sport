@@ -10,4 +10,7 @@ public interface Result_Service {
 	 * @return
 	 */
 	public List<Result_> getResult_byClas_id(Integer id);
+	
+	
+	public List<Result_> getResult_byStudent_id(Integer id);
 }
