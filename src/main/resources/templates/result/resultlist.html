@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="tontent-type" content="text/html; charset=UTF-8">
+
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<script type="text/javascript" th:src="@{/script/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<link th:href="@{/style/chen.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="modal-dialog " style="width:1000px"> 
+		<div class="modal-content">
+			<div class="modal-header">
+				<div th:replace="~{nav}"/>
+			</div>
+			<div class="modal-header">
+				<label for="default" class="col-sm-2 control-label">成绩信息</label>
+			</div>
+			<div class="modal-body">
+			    <div>
+			    	<select></select>
+			    	<a href="/sport/school/info"><button type="button" class="btn btn-primary btn-sm">添加</button></a>
+			    	<button type="button" class="btn btn-primary btn-sm">测试</button>
+			    </div> 
+				
+				<form id="query" class="modalbody" action="/school/list" method="POST">
+					<input type="hidden" name="grade_id" th:value="${grade_id}">
+					<input type="hidden" name="clas_id" th:value="${clas_id}">
+					<div class="list">
+				        <table class="table table-hover">
+							<thead>
+							  <tr>
+							  	<th><span th:text="姓名"></span> </th>
+							    <th th:each="i:${items}"><span th:text="${i.name}"></span><th>
+							  </tr>
+							</thead>
+							<tbody>
+								<!-- <tr th:each="t:${page.list}">
+									<td><span th:text="${t.student.name}"></span><td>
+									<td><span th:text="${t.student.name}"></span><td>
+								</tr> -->
+					</table>
+				<!-- <div th:replace="~{page}"/> -->
+				</form>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
