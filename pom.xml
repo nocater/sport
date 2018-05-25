@@ -57,7 +57,7 @@
     <dependency>
         <groupId>com.github.pagehelper</groupId>
         <artifactId>pagehelper</artifactId>
-        <version>5.0.4</version>
+        <version>5.1.1</version>
     </dependency>
     <!-- ban tomcat -->
     <dependency>

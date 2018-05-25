@@ -65,7 +65,7 @@ body{
       .nav li{
         margin-right:20px;
         font-weight:bold;
-        margin-top:15px;
+        margin-top:0px;
       }
       .nav li a{
       padding:0px;}
@@ -115,7 +115,7 @@ body{
       .add{
         margin-top:10px;
       }
-      .taskStatus{
+      .list{
         width:890px;
         margin:auto;
         margin-top:20px;

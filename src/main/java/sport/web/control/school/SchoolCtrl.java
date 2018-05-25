@@ -1,5 +1,6 @@
-package sport.web.control;
+package sport.web.control.school;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,28 +21,30 @@ public class SchoolCtrl {
 	 * @return
 	 */
 	@RequestMapping("/info")
-	public String index(){
+	public String index(
+			@RequestParam(value = "id", required=false) Integer id
+						){
+		//通过ID查询学校
 		return "/school/schoolinfo";
 	}
 	
-	@RequestMapping("/list")
+	@RequestMapping("")
 	public String list(ModelMap model, 
 						@RequestParam(value="pageNum",required=false,defaultValue="1") Integer pageNum,
 						@RequestParam(value = "pageSize", required=false, defaultValue="3") Integer pageSize,
 						@RequestParam(value = "message", required=false) String message
 						){
 		PageHelper.startPage(2, 3);
-		List<String> list = Arrays.asList(new String[]{"燕山大学", "秦皇岛一中",
-				"秦皇岛一中",
-				"秦皇岛2中",
-				"秦皇岛3中",
-				"秦皇岛4中",
-				"秦皇岛5中",
-				"秦皇岛6中",
-				"秦皇岛7中",
-				"秦皇岛8中",
-				"秦皇岛9中"});
-		PageInfo<String> page = new PageInfo<String>(list);
+		List<String> list = new ArrayList<String>();
+		list.add("秦皇岛一中");
+		list.add("秦皇岛2中");
+		list.add("秦皇岛3中");
+		list.add("秦皇岛4中");
+		list.add("秦皇岛5中");
+		list.add("秦皇岛6中");
+		list.add("秦皇岛7中");
+		list.add("秦皇岛8中");
+		PageInfo page = new PageInfo(list);
 		model.addAttribute("page", page);
 		return "/school/schoollist";
 	}
