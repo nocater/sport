@@ -31,7 +31,7 @@ public class SchoolCtrl {
 	@RequestMapping("")
 	public String list(ModelMap model, 
 						@RequestParam(value="pageNum",required=false,defaultValue="1") Integer pageNum,
-						@RequestParam(value = "pageSize", required=false, defaultValue="3") Integer pageSize,
+						@RequestParam(value = "pageSize", required=false, defaultValue="10") Integer pageSize,
 						@RequestParam(value = "message", required=false) String message
 						){
 		PageHelper.startPage(2, 3);
