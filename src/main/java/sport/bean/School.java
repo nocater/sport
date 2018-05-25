@@ -11,7 +11,7 @@ public class School {
 
     private String president;
 
-    private Integer tel;
+    private String tel;
 
     private String email;
 
@@ -57,11 +57,11 @@ public class School {
         this.president = president == null ? null : president.trim();
     }
 
-    public Integer getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(Integer tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 

@@ -27,7 +27,7 @@ public interface SchoolMapper {
         "email, schooltype)",
         "values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, ",
         "#{address,jdbcType=VARCHAR}, #{zipcode,jdbcType=INTEGER}, ",
-        "#{president,jdbcType=VARCHAR}, #{tel,jdbcType=INTEGER}, ",
+        "#{president,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, ",
         "#{email,jdbcType=VARCHAR}, #{schooltype,jdbcType=VARCHAR})"
     })
     int insert(School record);
@@ -47,7 +47,7 @@ public interface SchoolMapper {
         @Result(column="address", property="address", jdbcType=JdbcType.VARCHAR),
         @Result(column="zipcode", property="zipcode", jdbcType=JdbcType.INTEGER),
         @Result(column="president", property="president", jdbcType=JdbcType.VARCHAR),
-        @Result(column="tel", property="tel", jdbcType=JdbcType.INTEGER),
+        @Result(column="tel", property="tel", jdbcType=JdbcType.VARCHAR),
         @Result(column="email", property="email", jdbcType=JdbcType.VARCHAR),
         @Result(column="schooltype", property="schooltype", jdbcType=JdbcType.VARCHAR)
     })
@@ -63,7 +63,7 @@ public interface SchoolMapper {
           "address = #{address,jdbcType=VARCHAR},",
           "zipcode = #{zipcode,jdbcType=INTEGER},",
           "president = #{president,jdbcType=VARCHAR},",
-          "tel = #{tel,jdbcType=INTEGER},",
+          "tel = #{tel,jdbcType=VARCHAR},",
           "email = #{email,jdbcType=VARCHAR},",
           "schooltype = #{schooltype,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
@@ -82,7 +82,7 @@ public interface SchoolMapper {
         @Result(column="address", property="address", jdbcType=JdbcType.VARCHAR),
         @Result(column="zipcode", property="zipcode", jdbcType=JdbcType.INTEGER),
         @Result(column="president", property="president", jdbcType=JdbcType.VARCHAR),
-        @Result(column="tel", property="tel", jdbcType=JdbcType.INTEGER),
+        @Result(column="tel", property="tel", jdbcType=JdbcType.VARCHAR),
         @Result(column="email", property="email", jdbcType=JdbcType.VARCHAR),
         @Result(column="schooltype", property="schooltype", jdbcType=JdbcType.VARCHAR),
     })
