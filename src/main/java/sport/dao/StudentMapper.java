@@ -1,5 +1,7 @@
 package sport.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.InsertProvider;
@@ -54,6 +56,30 @@ public interface StudentMapper {
         		)
     })
     Student selectByPrimaryKey(Integer id);
+    
+    @Select({
+        "select",
+        "id, name, sex, birth, studentnum, ethnic, personnum, adress, clas_id",
+        "from student",
+        "where clas_id= #{id,jdbcType=INTEGER}"
+    })
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="name", property="name", jdbcType=JdbcType.VARCHAR),
+        @Result(column="sex", property="sex", jdbcType=JdbcType.VARCHAR),
+        @Result(column="birth", property="birth", jdbcType=JdbcType.VARCHAR),
+        @Result(column="studentnum", property="studentnum", jdbcType=JdbcType.VARCHAR),
+        @Result(column="ethnic", property="ethnic", jdbcType=JdbcType.VARCHAR),
+        @Result(column="personnum", property="personnum", jdbcType=JdbcType.VARCHAR),
+        @Result(column="adress", property="adress", jdbcType=JdbcType.VARCHAR),
+        @Result(column="clas_id", property="class_", jdbcType=JdbcType.INTEGER,
+        		one = @One(select="sport.dao.Class_Mapper.selectByPrimaryKey")
+        		)
+    })
+    
+    List<Student> selectBylassIdClassId(Integer id); 
+    
+    
     
     @Select({
         "select",

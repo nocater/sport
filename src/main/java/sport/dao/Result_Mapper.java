@@ -61,9 +61,11 @@ public interface Result_Mapper {
         "where item_id  in (select item_id from grade_item where "
         + "grade_id =(select grade_id from student where id = #{id,jdbcType=INTEGER}))"
     })*/
+    
+    
     @Select({
         "select * from result",
-        "where student_id = #{id}"
+        "where student_id = #{id,jdbcType=INTEGER}"
     })
     @Results({
 	   	@Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
@@ -78,11 +80,38 @@ public interface Result_Mapper {
     List<Result_> selectByStudentId(Integer id);
     
     @Select({
+		"select",
+        "id,item_id,student_id,score",
+        "from result where student_id in(",
+        	"select",
+        	"id",
+        	"from student",
+        	"where clas_id = #{id,jdbcType=INTEGER}",
+        ")"
+
+    })
+    
+    @Results({
+	   	@Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
+        @Result(column="item_id", property="item", jdbcType=JdbcType.INTEGER,
+        		one = @One(select="sport.dao.ItemMapper.selectByPrimaryKey")
+        		),
+        @Result(column="student_id", property="student", jdbcType=JdbcType.INTEGER,
+        		one = @One(select="sport.dao.StudentMapper.selectByPrimaryKey")
+        		),
+        @Result(column="score", property="score", jdbcType=JdbcType.VARCHAR)
+    })
+    
+    List<Result_> selectByClassId(Integer id);
+    //根据班级ID查找
+    
+   
+   /* @Select({
         "select * from result",
         "where student_id = #{id}"
     })
     
- /*   @Results({
+    @Results({
 	   	@Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
         @Result(column="item_id", property="item", jdbcType=JdbcType.INTEGER,
         		one = @One(select="sport.dao.ItemMapper.selectByPrimaryKey")
@@ -94,7 +123,7 @@ public interface Result_Mapper {
     })
     
     List<Result_> selectByGradeIdAndClassId(Integer grade_id,Integer class_id);
-    
+      //根据年级ID  班级ID  级联查找
     */
     
     
