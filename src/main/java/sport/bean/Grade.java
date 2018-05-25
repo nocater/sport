@@ -1,9 +1,12 @@
 package sport.bean;
 
+import java.util.List;
+
 public class Grade {
     private Integer id;
 
 
+	private List<Item> items;
 
 	private School school;
 
@@ -19,7 +22,6 @@ public class Grade {
         this.id = id;
     }
 
- 
     public Integer getNum() {
         return num;
     }
@@ -41,5 +43,13 @@ public class Grade {
 
 	public void setSchool(School school) {
 		this.school = school;
+	}
+
+    public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 }

@@ -1,16 +1,8 @@
 package sport.bean;
 
-import java.util.List;
-
 public class Env {
     private Integer id;
-
-
-
 	private Class_ class_;
-
-
-
 	public Item getItem() {
 		return item;
 	}
