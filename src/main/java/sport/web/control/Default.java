@@ -11,6 +11,6 @@ public class Default {
 	 */
 	@RequestMapping("/")
 	public String index(){
-		return "index";
+		return "login";
 	}
 }
