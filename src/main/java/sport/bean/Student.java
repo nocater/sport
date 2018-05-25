@@ -1,5 +1,8 @@
 package sport.bean;
 
+import java.util.List;
+import java.util.Map;
+
 public class Student {
     private Integer id;
 
@@ -16,6 +19,8 @@ public class Student {
     private String personnum;
 
     private String adress;
+    
+    private Map<Integer, String> results;
 
     public Class_ getClass_() {
 		return class_;
@@ -90,5 +95,13 @@ public class Student {
     public void setAdress(String adress) {
         this.adress = adress == null ? null : adress.trim();
     }
+
+	public Map<Integer, String> getResults() {
+		return results;
+	}
+
+	public void setResults(Map<Integer, String> results) {
+		this.results = results;
+	}
 
 }
