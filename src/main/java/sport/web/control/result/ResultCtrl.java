@@ -1,6 +1,7 @@
 package sport.web.control.result;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,12 @@ public class ResultCtrl {
 		
 		//获取所有项目
 		List<Item> items = itemService.getItemsByGrade(grade_id);
+		Iterator<Item> it = items.iterator();
+		while(it.hasNext()){
+			if(it.next().getName().contains("女")){
+				it.remove();
+			}
+		}
 		model.addAttribute("items",items);
 		//获取所有成绩
 		PageHelper.startPage(pageNum, pageSize);

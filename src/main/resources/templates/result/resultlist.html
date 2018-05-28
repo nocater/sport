@@ -33,15 +33,16 @@
 				        <table class="table table-hover">
 							<thead>
 							  <tr>
-							  	<th><span th:text="姓名"></span> </th>
-							    <th th:each="i:${items}"><span th:text="${i.name}"></span><th>
+							  	<th th:text="姓名"></th>
+							    <th th:each="i:${items}" th:text="${i.name}"></th>
+							    <th>操作<th>
 							  </tr>
 							</thead>
 							<tbody>
-								<tr th:each="t:${page.list}">
-									<td><span th:text="${t.student.name}"></span><td>
-									
-									<td><span th:text="${tStat.index}"></span><td>
+								<tr th:each="s:${page.list}">
+									<td th:text="${s.name}"></td>
+									<td th:each="r:${s.results}" th:text="${r.value}"></td>
+									<td>修改<td>
 								</tr>
 					</table>
 				<div th:replace="~{page}"/>
