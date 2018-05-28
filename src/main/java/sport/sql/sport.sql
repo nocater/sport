@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2018-05-28 12:59:12
+Date: 2018-05-28 15:39:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,8 +42,7 @@ DROP TABLE IF EXISTS `addscore`;
 CREATE TABLE `addscore` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `item_id` int(11) NOT NULL,
-  `grade_num` varchar(255) DEFAULT NULL,
-  `add` varchar(255) DEFAULT NULL,
+  `add` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `standrad` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`),
@@ -53,26 +52,26 @@ CREATE TABLE `addscore` (
 -- ----------------------------
 -- Records of addscore
 -- ----------------------------
-INSERT INTO addscore VALUES ('1', '11', '11', '20', '40');
-INSERT INTO addscore VALUES ('2', '11', '11', '19', '38');
-INSERT INTO addscore VALUES ('3', '11', '11', '18', '36');
-INSERT INTO addscore VALUES ('4', '11', '11', '17', '34');
-INSERT INTO addscore VALUES ('5', '11', '11', '16', '32');
-INSERT INTO addscore VALUES ('6', '11', '11', '15', '30');
-INSERT INTO addscore VALUES ('7', '11', '11', '14', '28');
-INSERT INTO addscore VALUES ('8', '11', '11', '13', '26');
-INSERT INTO addscore VALUES ('9', '11', '11', '12', '24');
-INSERT INTO addscore VALUES ('10', '11', '11', '11', '22');
-INSERT INTO addscore VALUES ('11', '11', '11', '10', '20');
-INSERT INTO addscore VALUES ('12', '11', '11', '9', '18');
-INSERT INTO addscore VALUES ('13', '11', '11', '8', '16');
-INSERT INTO addscore VALUES ('14', '11', '11', '7', '14');
-INSERT INTO addscore VALUES ('15', '11', '11', '6', '12');
-INSERT INTO addscore VALUES ('16', '11', '11', '5', '10');
-INSERT INTO addscore VALUES ('17', '11', '11', '4', '8');
-INSERT INTO addscore VALUES ('18', '11', '11', '3', '6');
-INSERT INTO addscore VALUES ('19', '11', '11', '2', '4');
-INSERT INTO addscore VALUES ('20', '11', '11', '1', '2');
+INSERT INTO addscore VALUES ('1', '11', '20', '40');
+INSERT INTO addscore VALUES ('2', '11', '19', '38');
+INSERT INTO addscore VALUES ('3', '11', '18', '36');
+INSERT INTO addscore VALUES ('4', '11', '17', '34');
+INSERT INTO addscore VALUES ('5', '11', '16', '32');
+INSERT INTO addscore VALUES ('6', '11', '15', '30');
+INSERT INTO addscore VALUES ('7', '11', '14', '28');
+INSERT INTO addscore VALUES ('8', '11', '13', '26');
+INSERT INTO addscore VALUES ('9', '11', '12', '24');
+INSERT INTO addscore VALUES ('10', '11', '11', '22');
+INSERT INTO addscore VALUES ('11', '11', '10', '20');
+INSERT INTO addscore VALUES ('12', '11', '9', '18');
+INSERT INTO addscore VALUES ('13', '11', '8', '16');
+INSERT INTO addscore VALUES ('14', '11', '7', '14');
+INSERT INTO addscore VALUES ('15', '11', '6', '12');
+INSERT INTO addscore VALUES ('16', '11', '5', '10');
+INSERT INTO addscore VALUES ('17', '11', '4', '8');
+INSERT INTO addscore VALUES ('18', '11', '3', '6');
+INSERT INTO addscore VALUES ('19', '11', '2', '4');
+INSERT INTO addscore VALUES ('20', '11', '1', '2');
 
 -- ----------------------------
 -- Table structure for `clas`
@@ -114,34 +113,55 @@ CREATE TABLE `criterion` (
   `standrad` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `levl` varchar(255) DEFAULT NULL,
   `score` varchar(255) DEFAULT NULL,
+  `temp` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`),
   CONSTRAINT `criterion_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of criterion
 -- ----------------------------
-INSERT INTO criterion VALUES ('1', '11', '11', '109', '优秀', '100');
-INSERT INTO criterion VALUES ('2', '11', '11', '104', '优秀', '95');
-INSERT INTO criterion VALUES ('3', '11', '11', '99', '优秀', '90');
-INSERT INTO criterion VALUES ('4', '11', '11', '93', '良好', '85');
-INSERT INTO criterion VALUES ('5', '11', '11', '87', '良好', '80');
-INSERT INTO criterion VALUES ('6', '11', '11', '80', '及格', '78');
-INSERT INTO criterion VALUES ('7', '11', '11', '73', '及格', '76');
-INSERT INTO criterion VALUES ('8', '11', '11', '66', '及格', '74');
-INSERT INTO criterion VALUES ('9', '11', '11', '59', '及格', '72');
-INSERT INTO criterion VALUES ('10', '11', '11', '52', '及格', '70');
-INSERT INTO criterion VALUES ('11', '11', '11', '45', '及格', '68');
-INSERT INTO criterion VALUES ('12', '11', '11', '38', '及格', '66');
-INSERT INTO criterion VALUES ('13', '11', '11', '31', '及格', '64');
-INSERT INTO criterion VALUES ('14', '11', '11', '24', '及格', '62');
-INSERT INTO criterion VALUES ('15', '11', '11', '17', '及格', '60');
-INSERT INTO criterion VALUES ('16', '11', '11', '14', '不及格', '50');
-INSERT INTO criterion VALUES ('17', '11', '11', '11', '不及格', '40');
-INSERT INTO criterion VALUES ('18', '11', '11', '8', '不及格', '30');
-INSERT INTO criterion VALUES ('19', '11', '11', '5', '不及格', '20');
-INSERT INTO criterion VALUES ('20', '11', '11', '2', '不及格', '10');
+INSERT INTO criterion VALUES ('1', '11', '11', '109', '优秀', '100', '0');
+INSERT INTO criterion VALUES ('2', '11', '11', '104', '优秀', '95', '0');
+INSERT INTO criterion VALUES ('3', '11', '11', '99', '优秀', '90', '0');
+INSERT INTO criterion VALUES ('4', '11', '11', '93', '良好', '85', '0');
+INSERT INTO criterion VALUES ('5', '11', '11', '87', '良好', '80', '0');
+INSERT INTO criterion VALUES ('6', '11', '11', '80', '及格', '78', '0');
+INSERT INTO criterion VALUES ('7', '11', '11', '73', '及格', '76', '0');
+INSERT INTO criterion VALUES ('8', '11', '11', '66', '及格', '74', '0');
+INSERT INTO criterion VALUES ('9', '11', '11', '59', '及格', '72', '0');
+INSERT INTO criterion VALUES ('10', '11', '11', '52', '及格', '70', '0');
+INSERT INTO criterion VALUES ('11', '11', '11', '45', '及格', '68', '0');
+INSERT INTO criterion VALUES ('12', '11', '11', '38', '及格', '66', '0');
+INSERT INTO criterion VALUES ('13', '11', '11', '31', '及格', '64', '0');
+INSERT INTO criterion VALUES ('14', '11', '11', '24', '及格', '62', '0');
+INSERT INTO criterion VALUES ('15', '11', '11', '17', '及格', '60', '0');
+INSERT INTO criterion VALUES ('16', '11', '11', '14', '不及格', '50', '0');
+INSERT INTO criterion VALUES ('17', '11', '11', '11', '不及格', '40', '0');
+INSERT INTO criterion VALUES ('18', '11', '11', '8', '不及格', '30', '0');
+INSERT INTO criterion VALUES ('19', '11', '11', '5', '不及格', '20', '0');
+INSERT INTO criterion VALUES ('20', '11', '11', '2', '不及格', '10', '0');
+INSERT INTO criterion VALUES ('21', '11', '11', '117', '优秀', '100', '1');
+INSERT INTO criterion VALUES ('22', '11', '11', '110', '优秀', '95', '1');
+INSERT INTO criterion VALUES ('23', '11', '11', '103', '优秀', '90', '1');
+INSERT INTO criterion VALUES ('24', '11', '11', '95', '良好', '85', '1');
+INSERT INTO criterion VALUES ('25', '11', '11', '87', '良好', '80', '1');
+INSERT INTO criterion VALUES ('26', '11', '11', '80', '及格', '78', '1');
+INSERT INTO criterion VALUES ('27', '11', '11', '73', '及格', '76', '1');
+INSERT INTO criterion VALUES ('28', '11', '11', '66', '及格', '74', '1');
+INSERT INTO criterion VALUES ('29', '11', '11', '59', '及格', '72', '1');
+INSERT INTO criterion VALUES ('30', '11', '11', '52', '及格', '70', '1');
+INSERT INTO criterion VALUES ('31', '11', '11', '45', '及格', '68', '1');
+INSERT INTO criterion VALUES ('32', '11', '11', '38', '及格', '66', '1');
+INSERT INTO criterion VALUES ('33', '11', '11', '31', '及格', '64', '1');
+INSERT INTO criterion VALUES ('34', '11', '11', '24', '及格', '62', '1');
+INSERT INTO criterion VALUES ('35', '11', '11', '17', '及格', '60', '1');
+INSERT INTO criterion VALUES ('36', '11', '11', '14', '不及格', '50', '1');
+INSERT INTO criterion VALUES ('37', '11', '11', '11', '不及格', '40', '1');
+INSERT INTO criterion VALUES ('38', '11', '11', '8', '不及格', '30', '1');
+INSERT INTO criterion VALUES ('39', '11', '11', '5', '不及格', '20', '1');
+INSERT INTO criterion VALUES ('40', '11', '11', '2', '不及格', '10', '1');
 
 -- ----------------------------
 -- Table structure for `env`
