@@ -81,4 +81,20 @@ public interface AccountMapper {
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Account record);
+
+    @Select({
+        "select",
+        "id, role_id, name, real_name, password",
+        "from account",
+        "where name = #{name} and password = #{password}",
+    })
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="role_id", property="role", jdbcType=JdbcType.INTEGER,
+        		one = @One(select="sport.dao.RoleMapper.selectByPrimaryKey")),
+        @Result(column="name", property="name", jdbcType=JdbcType.VARCHAR),
+        @Result(column="real_name", property="realName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="password", property="password", jdbcType=JdbcType.VARCHAR)
+    })
+    Account login(Account record);
 }
