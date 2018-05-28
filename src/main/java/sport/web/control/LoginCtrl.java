@@ -41,8 +41,7 @@ public class LoginCtrl {
 			System.out.println(name+"登录失败！");
 			return "login";
 		}
-	}
-	
+	}	
 	/***
 	 * 测试Session获取值
 	 * @param LOGIN_ACCOUNT

@@ -57,6 +57,28 @@ public interface GradeMapper {
     List<Grade> selectAll();
     
     
+    @Select({
+        "select",
+        "id, school_id, num, name",
+        "from grade"
+        + " where school_id=#{id,jdbcType=INTEGER}"
+        
+    })
+    
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="school_id", property="school", jdbcType=JdbcType.INTEGER,
+        		one = @One(select="sport.dao.SchoolMapper.selectByPrimaryKey")),
+        @Result(column="id", property="items", jdbcType=JdbcType.INTEGER,
+        
+		 many = @Many(select="sport.dao.ItemMapper.selectByGrade")),
+        @Result(column="num", property="num", jdbcType=JdbcType.INTEGER),
+        @Result(column="name", property="name", jdbcType=JdbcType.VARCHAR)
+    })
+    
+    List<Grade> selectGradeBySchoolId(Integer id);
+    
+    
     
   
     @Select({

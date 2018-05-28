@@ -67,9 +67,7 @@ public interface Class_Mapper {
     })
     List<Class_> selectClassByGradeId(Integer id);
     
-    
-    
- 
+   
     @UpdateProvider(type=Class_SqlProvider.class, method="updateByPrimaryKeySelective")
     int updateByPrimaryKeySelective(Class_ record);
     @Update({
