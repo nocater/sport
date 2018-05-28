@@ -25,5 +25,10 @@ public class ItemImpl implements ItemService{
 		
 		return items;
 	}
+	@Override
+	public Item getItemById(Integer id) {
+		// TODO Auto-generated method stub
+		return itemmapper.selectByPrimaryKey(id);
+	}
 
 }

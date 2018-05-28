@@ -20,7 +20,7 @@ public class Student {
 
     private String adress;
     
-    private Map<Integer, String> results;
+    private List<Fresult> Fresults;//经过标准之后
 
     public Class_ getClass_() {
 		return class_;
@@ -96,12 +96,12 @@ public class Student {
         this.adress = adress == null ? null : adress.trim();
     }
 
-	public Map<Integer, String> getResults() {
-		return results;
+	public List<Fresult> getFresults() {
+		return Fresults;
 	}
 
-	public void setResults(Map<Integer, String> results) {
-		this.results = results;
+	public void setFresults(List<Fresult> fresults) {
+		Fresults = fresults;
 	}
 
 }

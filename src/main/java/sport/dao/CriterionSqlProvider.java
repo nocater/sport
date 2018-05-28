@@ -13,8 +13,8 @@ public class CriterionSqlProvider {
             sql.VALUES("id", "#{id,jdbcType=INTEGER}");
         }
         
-        if (record.getItemId() != null) {
-            sql.VALUES("item_id", "#{itemId,jdbcType=INTEGER}");
+        if (record.getItem().getId() != null) {
+            sql.VALUES("item_id", "#{item.id,jdbcType=INTEGER}");
         }
         
         if (record.getGradeNum() != null) {
@@ -40,8 +40,8 @@ public class CriterionSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("criterion");
         
-        if (record.getItemId() != null) {
-            sql.SET("item_id = #{itemId,jdbcType=INTEGER}");
+        if (record.getItem().getId() != null) {
+            sql.SET("item_id = #{item.id,jdbcType=INTEGER}");
         }
         
         if (record.getGradeNum() != null) {

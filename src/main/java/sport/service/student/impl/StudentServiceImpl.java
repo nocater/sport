@@ -9,11 +9,13 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sport.bean.Fresult;
 import sport.bean.Result_;
 import sport.bean.Student;
 import sport.dao.StudentMapper;
 import sport.service.result.Result_Service;
 import sport.service.student.Studentservice;
+import sport.util.criterion.CriterionUtil;
 
 @Service
 public class StudentServiceImpl implements Studentservice {
@@ -21,6 +23,8 @@ public class StudentServiceImpl implements Studentservice {
 	private StudentMapper studentMapper;
 	@Autowired
 	private Result_Service resultService;
+	@Autowired
+	private CriterionUtil CriterionUtil;
 	
 	@Override
 	public List<Student> getStudentsByClas(Integer clas_id) {
@@ -42,11 +46,13 @@ public class StudentServiceImpl implements Studentservice {
 		Student student = studentMapper.selectByPrimaryKey(student_id);
 		//封装学生成绩信息
 		List<Result_> onestuResults = resultService.getResult_byStudent_id(student_id);
-		Map<Integer, String> rs = new HashMap<Integer,String>();
-		for(Result_ r : onestuResults){
-			rs.put(r.getItem().getId(), r.getScore());
-		}
-		student.setResults(rs);
+		List<Fresult> fresults = CriterionUtil.dealStudentScore(student, onestuResults);
+		student.setFresults(fresults);
+//		Map<Integer, String> rs = new HashMap<Integer,String>();
+//		for(Result_ r : onestuResults){
+//			rs.put(r.getItem().getId(), r.getScore());
+//		}
+//		student.setResults(rs);
 		return student;
 	}
 	

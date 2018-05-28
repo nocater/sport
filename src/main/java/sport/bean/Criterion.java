@@ -3,7 +3,7 @@ package sport.bean;
 public class Criterion {
     private Integer id;
 
-    private Integer itemId;
+    private Item item;
 
     private String gradeNum;
 
@@ -21,12 +21,12 @@ public class Criterion {
         this.id = id;
     }
 
-    public Integer getItemId() {
-        return itemId;
+    public Item getItem() {
+        return item;
     }
 
-    public void setItemId(Integer itemId) {
-        this.itemId = itemId;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public String getGradeNum() {

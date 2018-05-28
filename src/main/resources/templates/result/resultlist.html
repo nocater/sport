@@ -8,6 +8,15 @@
 <script type="text/javascript" th:src="@{/script/jquery.js}"></script>
 <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 <link th:href="@{/style/chen.css}" rel="stylesheet" />
+<script type="text/javascript">
+	$(document).ready(function(){
+	});
+	
+	function selectGrade(value){
+		alert(value);
+	}
+		 
+</script>
 </head>
 
 <body>
@@ -41,9 +50,14 @@
 							<tbody>
 								<tr th:each="s:${page.list}">
 									<td th:text="${s.name}"></td>
-									<td th:each="r:${s.results}" th:text="${r.value}"></td>
+									<td th:each="f:${s.fresults}" th:text="${f.item.name}"></td>
 									<td>修改<td>
 								</tr>
+								<!-- <tr th:each="s:${page.list}">
+									<td th:text="${s.name}"></td>
+									<td th:each="f:${s.fresults}" th:text="${f.level}"></td>
+									<td>修改<td>
+								</tr> -->
 					</table>
 				<div th:replace="~{page}"/>
 				</form>

@@ -10,4 +10,10 @@ public interface ItemService {
 	 * @return
 	 */
 	public List<Item> getItemsByGrade(Integer id);
+	/***
+	 * 根据ID查询
+	 * @param id
+	 * @return
+	 */
+	public Item getItemById(Integer id);
 }
