@@ -14,18 +14,20 @@ import com.github.pagehelper.PageInfo;
 
 import sport.bean.Item;
 import sport.bean.Result_;
+import sport.bean.Student;
 import sport.service.item.ItemService;
 import sport.service.result.Result_Service;
+import sport.service.student.Studentservice;
 
 @Controller
-@RequestMapping(value="/ch")
+@RequestMapping(value="/result")
 public class ResultCtrl {
 	@Autowired
 	private ItemService itemService;
 	@Autowired
 	private Result_Service resultService;
-//	@Autowired
-//	private StudentService studentService;
+	@Autowired
+	private Studentservice studentService;
 //	@Autowired
 //	private ClasService clasService;
 	
@@ -33,7 +35,7 @@ public class ResultCtrl {
 	public String list(ModelMap model, 
 						@RequestParam Integer grade_id,
 						@RequestParam Integer clas_id,
-						@RequestParam(value="pageNum",required=false,defaultValue="1") Integer pageNum,
+						@RequestParam(value = "pageNum",required=false,defaultValue="1") Integer pageNum,
 						@RequestParam(value = "pageSize", required=false, defaultValue="10") Integer pageSize,
 						@RequestParam(value = "message", required=false) String message
 						){
@@ -47,8 +49,8 @@ public class ResultCtrl {
 		model.addAttribute("items",items);
 		//获取所有成绩
 		PageHelper.startPage(pageNum, pageSize);
-		List<Result_> results = resultService.getResult_byClas_id(clas_id);
-		PageInfo<Result_> page = new PageInfo<Result_>(results);
+		List<Student> students = studentService.getStudentsByClas(clas_id);
+		PageInfo<Student> page = new PageInfo<Student>(students);
 		model.addAttribute("page",page);
 		
 		model.addAttribute("grade_id",grade_id);
