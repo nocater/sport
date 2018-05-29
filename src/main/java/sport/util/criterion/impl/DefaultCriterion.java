@@ -34,6 +34,9 @@ public class DefaultCriterion implements CriterionUtil{
 				case 11:
 					//跳绳
 					fresult = dealTiaosheng(r, type);break;
+				case 14:
+					//跳远
+					fresult = dealTiaoyuan(r, type);break;
 				default:System.out.println(new Exception("未查询到该项目的分数计算方法！"));
 						fresult = new Fresult();
 						fresult.setItem(itemService.getItemById(r.getItem().getId()));
@@ -49,6 +52,29 @@ public class DefaultCriterion implements CriterionUtil{
 		List<Criterion> criterions = criterionService.getCriterionByItemId(11, type);
 		//设置项目
 		fresult.setItem(itemService.getItemById(11));
+		//设置原始成绩
+		fresult.setValue(r.getScore());
+		//结果
+		Criterion c = computeScore(criterions, r);
+		fresult.setLevel(c.getLevl());
+		fresult.setScore(c.getScore());
+		//加分判断
+		fresult.setAdd_score("0");
+		Integer fullscore = Integer.parseInt(criterions.get(0).getStandrad());
+		Integer value = Integer.parseInt(r.getScore())-fullscore;
+		if(value>0){
+			int add_score = value/2;
+			fresult.setAdd_score(String.valueOf(add_score));
+			fresult.setScore(String.valueOf(Integer.parseInt(fresult.getScore())+add_score));
+		}
+		return fresult;
+	}
+	
+	public Fresult dealTiaoyuan(Result_ r, int type){
+		Fresult fresult = new Fresult();
+		List<Criterion> criterions = criterionService.getCriterionByItemId(14, type);
+		//设置项目
+		fresult.setItem(itemService.getItemById(14));
 		//设置原始成绩
 		fresult.setValue(r.getScore());
 		//结果
