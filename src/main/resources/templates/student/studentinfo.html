@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="tontent-type" content="text/html; charset=UTF-8">
@@ -25,64 +25,82 @@
 				<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
 			</div>
 			<div class="modal-body">
-				<form class="modalbody" action="" method="POST">
+				<form class="modalbody" action="/sport" method="POST">
 					<input type="hidden" name="id">
-					<div class="customtask">
-						<label for="taskname" class="col-sm-2 control-label">学校名称</label>
+					<div class="default">
+						<label for="taskname" class="col-sm-2 control-label">班级信息</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="name"
-								placeholder="请输入学校名称">
+							<!-- <input type="text" class="form-control" name="name"
+								placeholder="请输入学校名称"> -->
+							<span th:text="${student?.class_.grade.school.name}+'    '+
+											${student?.class_.grade.name}+'    '+
+											${student?.class_.name}+'班'
+							"></span>
 						</div>
 					</div>
 					<div class="default">
-						<label for="default" class="col-sm-2 control-label">联系地址</label>
+						<label for="default" class="col-sm-2 control-label">姓名(学号)</label>
 						<div class="col-sm-10">
-							<input type="text" name="address" placeholder="请输入联系地址"
-								class="form-control">
+							<span th:text="${student?.name}+'('+${student?.studentnum}+')'"></span>
 						</div>
 					</div>
 					<div class="default">
-						<label for="default" class="col-sm-2 control-label">邮编</label>
+						<label for="default" class="col-sm-2 control-label">性别</label>
 						<div class="col-sm-10">
-							<input type="text" name="postcode" placeholder="请输入邮编"
-								class="form-control">
+							<span th:text="${student?.sex}"></span>
 						</div>
 					</div>
 					<div class="default">
-						<label for="default" class="col-sm-2 control-label">校长</label>
+						<label for="default" class="col-sm-2 control-label">地址</label>
 						<div class="col-sm-10">
-							<input type="text" name="address" placeholder=""
-								class="form-control">
+							<span th:text="${student?.adress}"></span>
 						</div>
 					</div>
-					<div class="default">
-						<label for="default" class="col-sm-2 control-label">电话</label>
-						<div class="col-sm-10">
-							<input type="text" name="phone" placeholder="电话"
-								class="form-control">
-						</div>
-					</div>
-					<div class="type">
-						<label for="type" class="col-sm-2 control-label">请选择学校类型:</label>
-						<select name="type" class="form-control">
-							<option value="all">小学</option>
-							<option value="daily">中学</option>
-						</select>
-					</div>
-					
 					
 					<!-- 成绩信息 -->
 					<div class="modal-header">
 						<label for="default" class="col-sm-2 control-label">学生成绩信息</label>
 						<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
 					</div>
-					<div class="default">
-						<label for="default" class="col-sm-2 control-label">跳高</label>
+					
+					<div class="default" th:each="i:${items}">
+						<label for="default" class="col-sm-2 control-label" th:text="${i.name}"></label>
 						<div class="col-sm-10">
 							<input type="text" name="address" placeholder=""
 								class="form-control">
 						</div>
 					</div>
+					
+					<div id="collapseTwo1" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <div class="proxy">
+                          <label for="name">是否启用代理</label>
+                            <div>
+                              	<input name="proxy" id="radioButton" type="radio" value="1" th:checked="${spidertask?.proxy} eq 1">是
+                              	<input name="proxy" id="radioButton" type="radio" value="0" th:checked="${spidertask?.proxy} eq 0">否
+                            </div>
+                        </div>
+                        <div class="proxy">
+                          <label for="name">是否启用翻墙</label>
+                            <div>
+                              	<input name="gfw" id="radioButton" type="radio" value="1" th:checked="${spidertask?.gfw} eq 1">是
+                              	<input name="gfw" id="radioButton" type="radio" value="0" th:checked="${spidertask?.gfw} eq 0">否
+                            </div>
+                        </div>
+                        <div class="delay">
+                          <label for="type">请输入延迟时长</label>
+                          <input type="text" name="delay" th:value="${spidertask?.delay}">
+                        </div>
+                        <div class="customheader">
+                          <label for="collectionname" class="col-sm-2 control-label">请自定义header</label>
+                          <div class="col-sm-10">
+                            <input type="text" name="header" class="form-control" th:value="${spidertask?.header}" style="width:411px">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+					
+					
 					
 					
 					<div class="modal-footer">

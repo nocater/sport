@@ -1,10 +1,8 @@
 package sport.service.student.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +11,7 @@ import sport.bean.Fresult;
 import sport.bean.Result_;
 import sport.bean.Student;
 import sport.dao.StudentMapper;
-import sport.service.result.Result_Service;
+import sport.service.result.ResultService;
 import sport.service.student.Studentservice;
 import sport.util.criterion.CriterionUtil;
 
@@ -22,7 +20,7 @@ public class StudentServiceImpl implements Studentservice {
 	@Autowired
 	private StudentMapper studentMapper;
 	@Autowired
-	private Result_Service resultService;
+	private ResultService resultService;
 	@Autowired
 	private CriterionUtil CriterionUtil;
 	
@@ -30,7 +28,7 @@ public class StudentServiceImpl implements Studentservice {
 	public List<Student> getStudentsByClas(Integer clas_id) {
 		// TODO Auto-generated method stub
 		List<Student> students = new ArrayList<Student>();
-		List<Student> origin_students = studentMapper.selectBylassIdClassId(clas_id);
+		List<Student> origin_students = studentMapper.selectByClassId(clas_id);
 		Iterator<Student> iter = origin_students.iterator();
 		while(iter.hasNext()){
 			Student s = iter.next();

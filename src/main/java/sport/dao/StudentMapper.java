@@ -77,7 +77,7 @@ public interface StudentMapper {
         		)
     })
     
-    List<Student> selectBylassIdClassId(Integer id); 
+    List<Student> selectByClassId(Integer id); 
     
     
     
