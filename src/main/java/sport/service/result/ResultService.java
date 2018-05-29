@@ -1,6 +1,7 @@
 package sport.service.result;
 
 import java.util.List;
+import java.util.Map;
 
 import sport.bean.Fresult;
 import sport.bean.Result_;
@@ -40,4 +41,11 @@ public interface ResultService {
 	 * @return
 	 */
 	List<Integer> getTerms(Integer student_id);
+	/***
+	 * 根据班级和学期获取成绩
+	 * @param student_id
+	 * @return
+	 */
+	List<Fresult> getResultByClassIdAndTerm(Map<String, Integer> map);
+	
 }

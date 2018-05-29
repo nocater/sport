@@ -25,7 +25,7 @@ import sport.bean.Student;
 import sport.service.class_.Class_Service;
 import sport.service.grade.GradeService;
 import sport.service.item.ItemService;
-import sport.service.result.Result_Service;
+import sport.service.result.ResultService;
 import sport.service.school.SchoolService;
 import sport.service.student.Studentservice;
 
@@ -35,7 +35,7 @@ public class ResultCtrl {
 	@Autowired
 	private ItemService itemService;
 	@Autowired
-	private Result_Service resultService;
+	private ResultService ResultService;
 	@Autowired
 	private Studentservice studentService;
 	@Autowired
@@ -51,18 +51,13 @@ public class ResultCtrl {
 	@RequestMapping(value="")
 	public String list(ModelMap model, 
 			            HttpSession session,
-						@RequestParam(value = "grade_id",required=false) Integer grade_id,
-						@RequestParam(value = "clas_id",required=false) Integer clas_id,
+						@RequestParam(value = "grade_id",required=false,defaultValue="39") Integer grade_id,
+						@RequestParam(value = "clas_id",required=false,defaultValue="65") Integer clas_id,
+						@RequestParam(value = "term_id",required=false,defaultValue="1")   Integer term_id,
 						@RequestParam(value = "pageNum",required=false,defaultValue="1") Integer pageNum,
 						@RequestParam(value = "pageSize", required=false, defaultValue="10") Integer pageSize,
 						@RequestParam(value = "message", required=false) String message
 						){
-		  
-		
-		
-		//System.out.print(grade_id);
-		//System.out.print(clas_id);
-		
 		Account account = (Account) session.getAttribute("LOGIN_ACCOUNT");
 				
 		School school = schoolservice.getSchoolByRoleId(account.getRole().getId());
@@ -78,16 +73,13 @@ public class ResultCtrl {
 				
 		//获取所有项目
 		List<Item> items = itemService.getItemsByGrade(grade_id);
-		Iterator<Item> it = items.iterator();
-		while(it.hasNext()){
-			if(it.next().getName().contains("女")){
-				it.remove();
-			}
-		}
+
 		model.addAttribute("items",items);
 		//获取所有成绩
 		PageHelper.startPage(pageNum, pageSize);
-		List<Student> students = studentService.getStudentsByClas(clas_id);
+		//List<Student> students = studentService.getStudentsByClas(clas_id);
+		List<Student> students = ResultService.getFresultsByClasWithTerm(clas_id, term_id);
+		
 		PageInfo<Student> page = new PageInfo<Student>(students);
 		model.addAttribute("page",page);
 		

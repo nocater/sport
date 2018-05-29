@@ -163,6 +163,34 @@ public interface Result_Mapper {
     List<Result_> selectByClassId(Integer id);
     
     
+  //班级ID和学期查询所有成绩
+    @Select({
+		"select",
+        "id,item_id,student_id,score,term,type",
+        "from result where student_id in(",
+        	"select",
+        	"id",
+        	"from student",
+        	"where clas_id = #{id,jdbcType=INTEGER}",
+        ") and term = #{term,jdbcType=INTEGER}"
+
+    })
+    
+    @Results({
+	   	@Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
+        @Result(column="item_id", property="item", jdbcType=JdbcType.INTEGER,
+        		one = @One(select="sport.dao.ItemMapper.selectByPrimaryKey")
+        		),
+        @Result(column="student_id", property="student", jdbcType=JdbcType.INTEGER,
+        		one = @One(select="sport.dao.StudentMapper.selectByPrimaryKey")
+        		),
+        @Result(column="score", property="score", jdbcType=JdbcType.VARCHAR),
+        @Result(column="term", property="term", jdbcType=JdbcType.INTEGER),
+        @Result(column="type", property="type", jdbcType=JdbcType.INTEGER)
+    })
+    
+    List<Result_> selectByClassIdAndTerm(Map<String, Integer> map);
+    
     @UpdateProvider(type=Result_SqlProvider.class, method="updateByPrimaryKeySelective")
     int updateByPrimaryKeySelective(Result record);
 

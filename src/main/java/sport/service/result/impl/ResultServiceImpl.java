@@ -75,5 +75,15 @@ public class ResultServiceImpl implements ResultService{
 		// TODO Auto-generated method stub
 		return result_mapper.selectStudentTerms(student_id);
 	}
+	@Override
+	public List<Fresult> getResultByClassIdAndTerm(Map<String, Integer> map) {
+		// TODO Auto-generated method stub
+		List<Result_> selectreaults = result_mapper.selectByClassIdAndTerm(map);
+		
+		
+		
+		
+		return null;
+	}
 
 }

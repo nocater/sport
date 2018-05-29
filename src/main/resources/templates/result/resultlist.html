@@ -34,6 +34,17 @@ $(document).ready(function(){
 	});
 	
 });
+
+function queryResult(){
+    
+    $("#cla_id").attr("value",$('#clas_id').find('option:selected').attr('value'))
+	
+	$("#grad_id").attr("value",$('#grade_select').find('option:selected').attr('value'));
+	
+	$("#tem_id").attr("value",$('#term_id').find('option:selected').attr('value'));
+	
+	$("#query").submit(); 
+}
 </script>
 </head>
 
@@ -63,14 +74,23 @@ $(document).ready(function(){
 								th:value=${c.id}></option>
 						</select>
 					</div>
+					<div class="form-inline" style="float: left ;width: 20%">
+						<label for="name">学期:</label> <select id="term_id" class="selectpicker"
+							style="width: 40%" name="term_id">
+							<option  value=1>第一学期</option>
+							<option value=2>第二学期</option>		
+						</select>
+					</div>
+						
 				</div>
-
-				<a href="/sport/result"><button type="button"
-						class="btn btn-primary btn-sm">查询</button></a>
+				
+				<button type="button"
+						class="btn btn-primary btn-sm" onclick="queryResult()">查询</button>
 			</div>
 			<form id="query" class="modalbody" action="/sport/result" method="POST">
-					<input type="hidden" name="grade_id" th:value="${grade_id}">
-					<input type="hidden" name="clas_id" th:value="${clas_id}">
+					<input id="grad_id" type="hidden" name="grade_id" th:value="${grade_id}">
+					<input id="cla_id" type="hidden" name="clas_id" th:value="${clas_id}">
+					<input id="tem_id" type="hidden" name="term_id" th:value="${term_id}">
 					<div class="list">
 				        <table class="table table-hover">
 							<thead>
@@ -83,7 +103,7 @@ $(document).ready(function(){
 							<tbody>
 								<tr th:each="s:${page.list}">
 									<td th:text="${s.name}"></td>
-									<td th:each="f:${s.fresults}" th:text="${f.item.name}"></td>
+									<td th:each="f:${s.fresults}" th:text="${f.score}"></td>
 									<td>修改<td>
 								</tr>
 								<!-- <tr th:each="s:${page.list}">
