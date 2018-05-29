@@ -1,11 +1,11 @@
 package sport.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
@@ -78,6 +78,32 @@ public interface Result_Mapper {
         @Result(column="type", property="type", jdbcType=JdbcType.INTEGER)
     })
     List<Result_> selectByStudentId(Integer id);
+    
+    //学生ID查询某一学期成绩
+    @Select({
+        "select * from result",
+        "where student_id = #{id,jdbcType=INTEGER} and term = #{term, jdbcType=INTEGER}"
+    })
+    @Results({
+	   	@Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
+        @Result(column="item_id", property="item", jdbcType=JdbcType.INTEGER,
+        		one = @One(select="sport.dao.ItemMapper.selectByPrimaryKey")
+        		),
+        @Result(column="student_id", property="student", jdbcType=JdbcType.INTEGER,
+        		one = @One(select="sport.dao.StudentMapper.selectByPrimaryKey")
+        		),
+        @Result(column="score", property="score", jdbcType=JdbcType.VARCHAR),
+	    @Result(column="term", property="term", jdbcType=JdbcType.INTEGER),
+        @Result(column="type", property="type", jdbcType=JdbcType.INTEGER)
+    })
+    List<Result_> selectByStudentIdWithTerm(Map<String, Integer> map);
+    
+    //查询学生有几个学期成绩
+    @Select({
+        "select distinct(term) from result",
+        "where student_id = #{id,jdbcType=INTEGER}"
+    })
+    List<Integer> selectStudentTerms(Integer id);
     
     //年级ID查询所有成绩
     @Select({

@@ -6,7 +6,8 @@ package sport.bean;
  *
  */
 public class Fresult {
-	private Item Item;		//项目
+	private Item Item;			//项目
+	private Integer term;		//学期
 	private String value;		//原始成绩
 	private String score;		//得分
 	private String add_score;	//加分
@@ -40,5 +41,11 @@ public class Fresult {
 	}
 	public void setLevel(String level) {
 		this.level = level;
+	}
+	public Integer getTerm() {
+		return term;
+	}
+	public void setTerm(Integer term) {
+		this.term = term;
 	}
 	}
