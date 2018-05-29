@@ -16,13 +16,8 @@ public class ItemImpl implements ItemService{
 	@Override
 	public List<Item> getItemsByGrade(Integer id) {
 		// TODO Auto-generated method stub
-		//	List<Item> selectByGrade(Integer id);
 		//ItemMapper
-    	
-	   
-	    
 		List<Item> items = itemmapper.selectByGrade(id);
-		
 		return items;
 	}
 	@Override

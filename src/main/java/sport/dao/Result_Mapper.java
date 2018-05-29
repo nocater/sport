@@ -55,14 +55,8 @@ public interface Result_Mapper {
     })
     
      Result_ selectByPrimaryKey(Integer id);
-    
-    /*@Select({
-        "select * from result",
-        "where item_id  in (select item_id from grade_item where "
-        + "grade_id =(select grade_id from student where id = #{id,jdbcType=INTEGER}))"
-    })*/
-    
-    
+ 
+    //学生ID查询成绩
     @Select({
         "select * from result",
         "where student_id = #{id,jdbcType=INTEGER}"
@@ -79,6 +73,34 @@ public interface Result_Mapper {
     })
     List<Result_> selectByStudentId(Integer id);
     
+    //年级ID查询所有成绩
+    @Select({
+		"select",
+        "id,item_id,student_id,score",
+        "from result where student_id in(",
+        	"select",
+        	"id",
+        	"from student",
+        	"where clas_id in (select id from clas where grade_id = #{id ,jdbcType=INTEGER})",
+        ")"
+
+    })
+    
+    @Results({
+	   	@Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
+        @Result(column="item_id", property="item", jdbcType=JdbcType.INTEGER,
+        		one = @One(select="sport.dao.ItemMapper.selectByPrimaryKey")
+        		),
+        @Result(column="student_id", property="student", jdbcType=JdbcType.INTEGER,
+        		one = @One(select="sport.dao.StudentMapper.selectByPrimaryKey")
+        		),
+        @Result(column="score", property="score", jdbcType=JdbcType.VARCHAR)
+    })
+    
+    List<Result_> selectByGradeId(Integer id);
+    
+    
+    //班级ID查询所有成绩
     @Select({
 		"select",
         "id,item_id,student_id,score",
@@ -103,13 +125,18 @@ public interface Result_Mapper {
     })
     
     List<Result_> selectByClassId(Integer id);
-    //根据班级ID查找
     
-   
-   /* @Select({
+    
+    
+    
+      
+/*    //根据年级ID  班级ID  级联查找
+     @Select({
         "select * from result",
-        "where student_id = #{id}"
+        "where student_id in (select id from student where clas_id= #{id2,jdbcType=INTEGER} and clas_id in (select id from clas where grade_id=#{id2,jdbcType=INTEGER}))"
+        
     })
+     
     
     @Results({
 	   	@Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
@@ -122,9 +149,9 @@ public interface Result_Mapper {
         @Result(column="score", property="score", jdbcType=JdbcType.VARCHAR)
     })
     
-    List<Result_> selectByGradeIdAndClassId(Integer grade_id,Integer class_id);
-      //根据年级ID  班级ID  级联查找
+    List<Result_> selectByGradeIdAndClassId(Integer id1, Integer id2);
     */
+    
     
     
     @UpdateProvider(type=Result_SqlProvider.class, method="updateByPrimaryKeySelective")

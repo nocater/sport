@@ -52,6 +52,29 @@ public interface SchoolMapper {
         @Result(column="schooltype", property="schooltype", jdbcType=JdbcType.VARCHAR)
     })
     School selectByPrimaryKey(Integer id);
+    
+    @Select({
+        "select",
+        "id, name, address, zipcode, president, tel, email, schooltype",
+        "from school",
+        "where id in ( "
+        + " select school_id from link where role_id=#{id,jdbcType=INTEGER})"
+    })
+    
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="name", property="name", jdbcType=JdbcType.VARCHAR),
+        @Result(column="address", property="address", jdbcType=JdbcType.VARCHAR),
+        @Result(column="zipcode", property="zipcode", jdbcType=JdbcType.INTEGER),
+        @Result(column="president", property="president", jdbcType=JdbcType.VARCHAR),
+        @Result(column="tel", property="tel", jdbcType=JdbcType.VARCHAR),
+        @Result(column="email", property="email", jdbcType=JdbcType.VARCHAR),
+        @Result(column="schooltype", property="schooltype", jdbcType=JdbcType.VARCHAR)
+    })
+    
+    School selectSchoolByRoleId(Integer id);
+    
+    
    
    
     @UpdateProvider(type=SchoolSqlProvider.class, method="updateByPrimaryKeySelective")
