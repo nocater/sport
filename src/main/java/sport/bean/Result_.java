@@ -2,6 +2,26 @@ package sport.bean;
 
 public class Result_ {
     private Integer id;
+    public Integer getTerm() {
+		return term;
+	}
+
+	public void setTerm(Integer term) {
+		this.term = term;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+	private Integer term;
+    private Integer type;
+    
+    
     
     public Item getItem() {
 		return item;
