@@ -17,6 +17,7 @@ import com.github.pagehelper.PageInfo;
 
 import sport.bean.Account;
 import sport.bean.Class_;
+import sport.bean.Fresult;
 import sport.bean.Grade;
 import sport.bean.Item;
 import sport.bean.Result_;
@@ -59,6 +60,7 @@ public class ResultCtrl {
 						@RequestParam(value = "message", required=false) String message
 						){
 		Account account = (Account) session.getAttribute("LOGIN_ACCOUNT");
+		if(account==null)return"redirect:/";
 				
 		School school = schoolservice.getSchoolByRoleId(account.getRole().getId());
 		
