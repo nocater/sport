@@ -75,7 +75,7 @@
 	                    <div th:id="'collapseTwo'+${tf.key}" class="panel-collapse collapse">
 	                      <div class="panel-body">
 	                      	<!-- 显示各项成绩 -->
-	                        <div class="default" th:each="f:${tf.value}">
+	                        <div class="default">
 	                        	<table style="width: 400px">
 	                        		<thead>
 	                        			<tr>
@@ -87,9 +87,9 @@
 	                        			</tr>
 	                        		</thead>
 	                        		<tbody>
-	                        			<tr>
+	                        			<tr th:each="f:${tf.value}">
 	                        				<td><label for="default" class="control-label" th:text="${f.item.name}"></label></td>
-	                        				<td><input type="text" name="address" class="form-control"  style="width: 50px"
+	                        				<td><input type="text" class="form-control"  style="width: 50px"
 														th:value="${f.value}"></td>
 	                        				<td><span th:text="${f.score}"></span></td>
 	                        				<td><span th:text="${f.add_score}"></span></td>
