@@ -2,6 +2,8 @@ package sport.bean;
 
 public class Result_ {
     private Integer id;
+	private Integer term;
+    private Integer type;
     public Integer getTerm() {
 		return term;
 	}
@@ -17,12 +19,7 @@ public class Result_ {
 	public void setType(Integer type) {
 		this.type = type;
 	}
-
-	private Integer term;
-    private Integer type;
-    
-    
-    
+	
     public Item getItem() {
 		return item;
 	}
