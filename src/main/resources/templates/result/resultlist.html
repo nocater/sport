@@ -62,7 +62,7 @@ function queryResult(){
 					<div class="form-inline" style="float: left;width: 30%">
 						<label for="name">选择年级:</label> 
 						<select id="grade_select"
-							class="selectpicker" style="width: 40%" name="grade_id">
+							class="bs-select-form-control" style="width: 40%" name="grade_id">
 							<option th:each="g:${grades}" th:text="${g.name}"
 								th:value=${g.id}></option>
 						</select>
@@ -104,7 +104,7 @@ function queryResult(){
 								<tr th:each="s:${page.list}">
 									<td th:text="${s.name}"></td>
 									<td th:each="f:${s.fresults}" th:text="${f.score}"></td>
-									<td>修改<td>
+									<td><a th:href="'/sport/student/info?id='+${s.id}">查看</a><td>
 								</tr>
 								<!-- <tr th:each="s:${page.list}">
 									<td th:text="${s.name}"></td>
