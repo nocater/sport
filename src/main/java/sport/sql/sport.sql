@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-05-29 10:01:21
+Date: 2018-05-29 13:59:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -118,7 +118,7 @@ CREATE TABLE `criterion` (
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`),
   CONSTRAINT `criterion_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of criterion
@@ -163,6 +163,46 @@ INSERT INTO `criterion` VALUES ('37', '11', '11', '11', '不及格', '40', '1');
 INSERT INTO `criterion` VALUES ('38', '11', '11', '8', '不及格', '30', '1');
 INSERT INTO `criterion` VALUES ('39', '11', '11', '5', '不及格', '20', '1');
 INSERT INTO `criterion` VALUES ('40', '11', '11', '2', '不及格', '10', '1');
+INSERT INTO `criterion` VALUES ('41', '14', '11', '225', '优秀', '100', '0');
+INSERT INTO `criterion` VALUES ('42', '14', '11', '218', '优秀', '95', '0');
+INSERT INTO `criterion` VALUES ('43', '14', '11', '211', '优秀', '90', '0');
+INSERT INTO `criterion` VALUES ('44', '14', '11', '203', '良好', '85', '0');
+INSERT INTO `criterion` VALUES ('45', '14', '11', '195', '良好', '80', '0');
+INSERT INTO `criterion` VALUES ('46', '14', '11', '191', '及格', '78', '0');
+INSERT INTO `criterion` VALUES ('47', '14', '11', '187', '及格', '76', '0');
+INSERT INTO `criterion` VALUES ('48', '14', '11', '183', '及格', '74', '0');
+INSERT INTO `criterion` VALUES ('49', '14', '11', '179', '及格', '72', '0');
+INSERT INTO `criterion` VALUES ('50', '14', '11', '175', '及格', '70', '0');
+INSERT INTO `criterion` VALUES ('51', '14', '11', '171', '及格', '68', '0');
+INSERT INTO `criterion` VALUES ('52', '14', '11', '167', '及格', '66', '0');
+INSERT INTO `criterion` VALUES ('53', '14', '11', '163', '及格', '64', '0');
+INSERT INTO `criterion` VALUES ('54', '14', '11', '159', '及格', '62', '0');
+INSERT INTO `criterion` VALUES ('55', '14', '11', '155', '及格', '60', '0');
+INSERT INTO `criterion` VALUES ('56', '14', '11', '150', '不及格', '50', '0');
+INSERT INTO `criterion` VALUES ('57', '14', '11', '145', '不及格', '40', '0');
+INSERT INTO `criterion` VALUES ('58', '14', '11', '140', '不及格', '30', '0');
+INSERT INTO `criterion` VALUES ('59', '14', '11', '135', '不及格', '20', '0');
+INSERT INTO `criterion` VALUES ('60', '14', '11', '130', '不及格', '10', '0');
+INSERT INTO `criterion` VALUES ('61', '14', '11', '196', '优秀', '100', '1');
+INSERT INTO `criterion` VALUES ('62', '14', '11', '190', '优秀', '95', '1');
+INSERT INTO `criterion` VALUES ('63', '14', '11', '184', '优秀', '90', '1');
+INSERT INTO `criterion` VALUES ('64', '14', '11', '177', '良好', '85', '1');
+INSERT INTO `criterion` VALUES ('65', '14', '11', '170', '良好', '80', '1');
+INSERT INTO `criterion` VALUES ('66', '14', '11', '167', '及格', '78', '1');
+INSERT INTO `criterion` VALUES ('67', '14', '11', '164', '及格', '76', '1');
+INSERT INTO `criterion` VALUES ('68', '14', '11', '161', '及格', '74', '1');
+INSERT INTO `criterion` VALUES ('69', '14', '11', '158', '及格', '72', '1');
+INSERT INTO `criterion` VALUES ('70', '14', '11', '155', '及格', '70', '1');
+INSERT INTO `criterion` VALUES ('71', '14', '11', '152', '及格', '68', '1');
+INSERT INTO `criterion` VALUES ('72', '14', '11', '149', '及格', '66', '1');
+INSERT INTO `criterion` VALUES ('73', '14', '11', '146', '及格', '64', '1');
+INSERT INTO `criterion` VALUES ('74', '14', '11', '143', '及格', '62', '1');
+INSERT INTO `criterion` VALUES ('75', '14', '11', '140', '及格', '60', '1');
+INSERT INTO `criterion` VALUES ('76', '14', '11', '135', '不及格', '50', '1');
+INSERT INTO `criterion` VALUES ('77', '14', '11', '130', '不及格', '40', '1');
+INSERT INTO `criterion` VALUES ('78', '14', '11', '125', '不及格', '30', '1');
+INSERT INTO `criterion` VALUES ('79', '14', '11', '120', '不及格', '20', '1');
+INSERT INTO `criterion` VALUES ('80', '14', '11', '115', '不及格', '10', '1');
 
 -- ----------------------------
 -- Table structure for env
@@ -228,12 +268,13 @@ CREATE TABLE `grade_item` (
   KEY `item_id` (`item_id`),
   CONSTRAINT `grade_item_ibfk_1` FOREIGN KEY (`grade_id`) REFERENCES `grade` (`id`),
   CONSTRAINT `grade_item_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of grade_item
 -- ----------------------------
 INSERT INTO `grade_item` VALUES ('1', '39', '11');
+INSERT INTO `grade_item` VALUES ('13', '39', '14');
 
 -- ----------------------------
 -- Table structure for item
@@ -305,7 +346,7 @@ CREATE TABLE `result` (
   KEY `student_id` (`student_id`),
   CONSTRAINT `result_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`),
   CONSTRAINT `result_ibfk_3` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of result
@@ -318,10 +359,22 @@ INSERT INTO `result` VALUES ('50', '11', '5', '116', '1', null);
 INSERT INTO `result` VALUES ('51', '11', '6', '50', '1', null);
 INSERT INTO `result` VALUES ('52', '11', '1', '121', '2', null);
 INSERT INTO `result` VALUES ('53', '11', '2', '87', '2', null);
-INSERT INTO `result` VALUES ('54', '11', '3', '93', '3', null);
-INSERT INTO `result` VALUES ('55', '11', '4', '67', '4', null);
-INSERT INTO `result` VALUES ('56', '11', '5', '70', '5', null);
-INSERT INTO `result` VALUES ('57', '11', '6', '88', '6', null);
+INSERT INTO `result` VALUES ('54', '11', '3', '93', '2', null);
+INSERT INTO `result` VALUES ('55', '11', '4', '67', '2', null);
+INSERT INTO `result` VALUES ('56', '11', '5', '70', '2', null);
+INSERT INTO `result` VALUES ('57', '11', '6', '88', '2', null);
+INSERT INTO `result` VALUES ('58', '14', '1', '230', '1', null);
+INSERT INTO `result` VALUES ('59', '14', '2', '200', '1', null);
+INSERT INTO `result` VALUES ('60', '14', '3', '185', '1', null);
+INSERT INTO `result` VALUES ('61', '14', '4', '200', '1', null);
+INSERT INTO `result` VALUES ('62', '14', '5', '168', '1', null);
+INSERT INTO `result` VALUES ('63', '14', '6', '120', '1', null);
+INSERT INTO `result` VALUES ('64', '14', '1', '220', '2', null);
+INSERT INTO `result` VALUES ('65', '14', '2', '230', '2', null);
+INSERT INTO `result` VALUES ('66', '14', '3', '180', '2', null);
+INSERT INTO `result` VALUES ('67', '14', '4', '210', '2', null);
+INSERT INTO `result` VALUES ('68', '14', '5', '170', '2', null);
+INSERT INTO `result` VALUES ('69', '14', '6', '130', '2', null);
 
 -- ----------------------------
 -- Table structure for role
