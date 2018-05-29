@@ -63,45 +63,45 @@
 						<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
 					</div>
 					
-					<div class="default" th:each="i:${items}">
-						<label for="default" class="col-sm-2 control-label" th:text="${i.name}"></label>
-						<div class="col-sm-10">
-							<input type="text" name="address" placeholder=""
-								class="form-control">
-						</div>
-					</div>
 					
-					<div id="collapseTwo1" class="panel-collapse collapse">
-                      <div class="panel-body">
-                        <div class="proxy">
-                          <label for="name">是否启用代理</label>
-                            <div>
-                              	<input name="proxy" id="radioButton" type="radio" value="1" th:checked="${spidertask?.proxy} eq 1">是
-                              	<input name="proxy" id="radioButton" type="radio" value="0" th:checked="${spidertask?.proxy} eq 0">否
-                            </div>
-                        </div>
-                        <div class="proxy">
-                          <label for="name">是否启用翻墙</label>
-                            <div>
-                              	<input name="gfw" id="radioButton" type="radio" value="1" th:checked="${spidertask?.gfw} eq 1">是
-                              	<input name="gfw" id="radioButton" type="radio" value="0" th:checked="${spidertask?.gfw} eq 0">否
-                            </div>
-                        </div>
-                        <div class="delay">
-                          <label for="type">请输入延迟时长</label>
-                          <input type="text" name="delay" th:value="${spidertask?.delay}">
-                        </div>
-                        <div class="customheader">
-                          <label for="collectionname" class="col-sm-2 control-label">请自定义header</label>
-                          <div class="col-sm-10">
-                            <input type="text" name="header" class="form-control" th:value="${spidertask?.header}" style="width:411px">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-					
-					
-					
+					<div class="antiAntiSpiderDict" th:each="tf:${terms_fresults}">
+	                  <div class="panel panel-default">
+	                    <div class="panel-heading">
+	                      <h4 class="panel-title">
+	                        <a data-toggle="collapse" data-parent="#accordion" th:href="'#collapseTwo'+${tf.key}" th:text="'第'+${tf.key}+'学期成绩'">
+	                        </a>
+	                      </h4>
+	                    </div>
+	                    <div th:id="'collapseTwo'+${tf.key}" class="panel-collapse collapse">
+	                      <div class="panel-body">
+	                      	<!-- 显示各项成绩 -->
+	                        <div class="default" th:each="f:${tf.value}">
+	                        	<table style="width: 400px">
+	                        		<thead>
+	                        			<tr>
+	                        				<th><label for="default" class="control-label">项目</label></th>
+	                        				<th><label for="default" class="control-label">成绩</label></th>
+	                        				<th><label for="default" class="control-label">得分</label></th>
+	                        				<th><label for="default" class="control-label">加分</label></th>
+	                        				<th><label for="default" class="control-label">等级</label></th>
+	                        			</tr>
+	                        		</thead>
+	                        		<tbody>
+	                        			<tr>
+	                        				<td><label for="default" class="control-label" th:text="${f.item.name}"></label></td>
+	                        				<td><input type="text" name="address" class="form-control"  style="width: 50px"
+														th:value="${f.value}"></td>
+	                        				<td><span th:text="${f.score}"></span></td>
+	                        				<td><span th:text="${f.add_score}"></span></td>
+	                        				<td><span th:text="${f.level}"></span></td>
+	                        			</tr>
+	                        		</tbody>
+	                        	</table>
+							</div><!-- 显示各项成绩 -->
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>
 					
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
