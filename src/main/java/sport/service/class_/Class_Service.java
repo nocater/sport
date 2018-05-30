@@ -8,5 +8,11 @@ public interface Class_Service {
 	
 	
 	List<Class_> getClass_ByGradeId(Integer id);
+	
+	List<Class_> getAllClass();
+	
+	
+	
+	
 
 }

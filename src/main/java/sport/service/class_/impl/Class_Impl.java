@@ -22,5 +22,11 @@ public class Class_Impl implements Class_Service {
 		return selectedclass_;
 		
 	}
+	@Override
+	public List<Class_> getAllClass() {
+		// TODO Auto-generated method stub
+		List<Class_> selectAll = class_mapper.selectAll();
+		return selectAll;
+	}
 
 }

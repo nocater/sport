@@ -21,8 +21,8 @@
 			</div>
 			<div class="modal-body">
 			    <div>
-			    	<a href="/sport/school/info"><button type="button" class="btn btn-primary btn-sm">添加</button></a>
-			    	<button type="button" class="btn btn-primary btn-sm">测试</button>
+			    	<a href="/sport/school/addinfo">
+			    	<button type="button" class="btn btn-primary btn-sm">添加</button></a>
 			    </div> 
 				
 				<form id="query" class="modalbody" action="/school/list" method="POST">
@@ -30,15 +30,22 @@
 				        <table class="table table-hover">
 							<thead>
 							  <tr>
-							    <th>编号</th>
 							    <th>学校名称</th>
+							    <th>地址</th>
+							    <th>类型</th>
+							    <th>操作</th>
 							  </tr>
 							</thead>
 							<tbody>
 								<tr th:each="t:${page.list}">
-									<td><span th:text="${t}"></span><td>
-									<td><span></span><td>
+									<td  th:text="${t.name}"></td>
+									<td  th:text="${t.address}"></td>
+									<td  th:text="${t.schooltype}"></td>
+									<td><a th:href="'/sport/school/edit?id='+${t.id}">查看</a><td>
+									
+									<!-- <td><a th:href="'/sport/student/info?id='+${t.id}">查看</a><td>	 -->	
 								</tr>
+							</tbody>
 					</table>
 				<div th:replace="~{page}"/>
 				</form>

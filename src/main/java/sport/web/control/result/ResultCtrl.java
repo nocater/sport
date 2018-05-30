@@ -82,7 +82,7 @@ public class ResultCtrl {
 		
 		PageInfo<Student> page = new PageInfo<Student>(students);
 		model.addAttribute("page",page);
-		
+		model.addAttribute("term_id",term_id);
 		model.addAttribute("grade_id",grade_id);
 		model.addAttribute("clas_id",clas_id);
 		return "/result/resultlist";

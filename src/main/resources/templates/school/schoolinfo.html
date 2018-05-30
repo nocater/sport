@@ -10,12 +10,18 @@
 <script type="text/javascript"
 	th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 <link th:href="@{/style/chen.css}" rel="stylesheet" />
+<script type="text/javascript">
+   $(document).ready(function(){
+    /* $("#result") */
+      alert("already");
+   
+   });
 
-<!-- <link href="../../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<script type="text/javascript" src="../../static/script/jquery.js"></script>
-	<script type="text/javascript" src="../../static/bootstrap/js/bootstrap.min.js"></script>
-	<link th:href="../../static/style/chen.css" rel="stylesheet"/> -->
+</script>
+
+
 </head>
+
 
 <body>
 	<div class="modal-dialog">
@@ -25,53 +31,66 @@
 				<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
 			</div>
 			<div class="modal-body">
-				<form class="modalbody" action="" method="POST">
+				<form class="modalbody" action="/sport/school/add" method="POST">
 					<input type="hidden" name="id">
 					<div class="customtask">
 						<label for="taskname" class="col-sm-2 control-label">学校名称</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="name"
+							<input id="school_name" type="text" class="form-control" name="name"
 								placeholder="请输入学校名称">
 						</div>
 					</div>
 					<div class="default">
 						<label for="default" class="col-sm-2 control-label">联系地址</label>
 						<div class="col-sm-10">
-							<input type="text" name="address" placeholder="请输入联系地址"
+							<input id="school_address" type="text" name="address" placeholder="请输入联系地址"
 								class="form-control">
 						</div>
 					</div>
 					<div class="default">
 						<label for="default" class="col-sm-2 control-label">邮编</label>
 						<div class="col-sm-10">
-							<input type="text" name="postcode" placeholder="请输入邮编"
+							<input id="school_zipcode" type="text" name="zipcode" placeholder="请输入邮编"
 								class="form-control">
 						</div>
 					</div>
 					<div class="default">
 						<label for="default" class="col-sm-2 control-label">校长</label>
 						<div class="col-sm-10">
-							<input type="text" name="address" placeholder=""
+							<input id="school_president" type="text" name="president" placeholder=""
 								class="form-control">
 						</div>
 					</div>
 					<div class="default">
 						<label for="default" class="col-sm-2 control-label">电话</label>
 						<div class="col-sm-10">
-							<input type="text" name="phone" placeholder="电话"
+							<input id="school_tel" type="text" name="tel" placeholder="电话"
+								class="form-control">
+						</div>
+					</div>
+					<div class="default">
+						<label for="default" class="col-sm-2 control-label">邮箱</label>
+						<div class="col-sm-10">
+							<input id="school_email" type="text" name="email" placeholder="邮箱"
 								class="form-control">
 						</div>
 					</div>
 					<div class="type">
 						<label for="type" class="col-sm-2 control-label">请选择学校类型:</label>
-						<select name="type" class="form-control">
-							<option value="all">小学</option>
-							<option value="daily">中学</option>
+						<select name="schooltype" class="form-control" id="school_schooltype">
+							<option value="小学">小学</option>
+							<option value="中学">中学</option>
+							<option value="高中">高中</option>
+							<option value="大学">大学</option>
+							<option value="其他">其他</option>
 						</select>
 					</div>
+					<div id="result"><h5 align = center >添加成功！</h5></div> 
+					
 					<div class="modal-footer">
+					    
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-						<button type="submit" class="btn btn-primary">提交</button>
+						<button type="submit" class="btn btn-primary">添加</button>
 					</div>
 				</form>
 			</div>
