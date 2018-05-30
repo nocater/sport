@@ -36,7 +36,13 @@ public class DefaultCriterion implements CriterionUtil{
 					fresult = dealTiaosheng(r, type);break;
 				case 14:
 					//跳远
-					fresult = dealTiaoyuan(r, type);break;
+					fresult = dealNoAddItems(r, type, 14, true);break;
+				case 5:
+					//肺活量
+					fresult = dealNoAddItems(r, type, 5, true);break;
+				case 7:
+					//50米跑
+					fresult = dealNoAddItems(r, type, 7, false);break;
 				default:System.out.println(new Exception("未查询到该项目的分数计算方法！"));
 						fresult = new Fresult();
 						fresult.setItem(itemService.getItemById(r.getItem().getId()));
@@ -55,30 +61,7 @@ public class DefaultCriterion implements CriterionUtil{
 		//设置原始成绩
 		fresult.setValue(r.getScore());
 		//结果
-		Criterion c = computeScore(criterions, r);
-		fresult.setLevel(c.getLevl());
-		fresult.setScore(c.getScore());
-		//加分判断
-		fresult.setAdd_score("0");
-		Integer fullscore = Integer.parseInt(criterions.get(0).getStandrad());
-		Integer value = Integer.parseInt(r.getScore())-fullscore;
-		if(value>0){
-			int add_score = value/2;
-			fresult.setAdd_score(String.valueOf(add_score));
-			fresult.setScore(String.valueOf(Integer.parseInt(fresult.getScore())+add_score));
-		}
-		return fresult;
-	}
-	
-	public Fresult dealTiaoyuan(Result_ r, int type){
-		Fresult fresult = new Fresult();
-		List<Criterion> criterions = criterionService.getCriterionByItemId(14, type);
-		//设置项目
-		fresult.setItem(itemService.getItemById(14));
-		//设置原始成绩
-		fresult.setValue(r.getScore());
-		//结果
-		Criterion c = computeScore(criterions, r);
+		Criterion c = computeScore(criterions, r, true);
 		fresult.setLevel(c.getLevl());
 		fresult.setScore(c.getScore());
 		//加分判断
@@ -94,19 +77,51 @@ public class DefaultCriterion implements CriterionUtil{
 	}
 	
 	/***
+	 * 非加分项通用项目分数计算方法
+	 * @param r
+	 * @param type
+	 * @param item_id
+	 * @return
+	 */
+	public Fresult dealNoAddItems(Result_ r, int type, int item_id, boolean order) {
+		Fresult fresult = new Fresult();
+		List<Criterion> criterions = criterionService.getCriterionByItemId(item_id, type);
+		//设置项目
+		fresult.setItem(itemService.getItemById(item_id));
+		//设置原始成绩
+		fresult.setValue(r.getScore());
+		//结果
+		Criterion c = computeScore(criterions, r, order);
+		System.out.println(r.getScore());
+		fresult.setLevel(c.getLevl());
+		fresult.setScore(c.getScore());
+		return fresult;
+	}
+	
+	/***
 	 * 根据标准和成绩找到匹配的那一条标准
+	 * order = 0 越小成绩越高
 	 * @param criterions
 	 * @param r
 	 * @return
 	 */
-	public Criterion computeScore(List<Criterion> criterions, Result_ r){
-		for(Criterion c : criterions){
-			if(Integer.parseInt(r.getScore())>= Integer.parseInt(c.getStandrad())){
-				return c;
+	public Criterion computeScore(List<Criterion> criterions, Result_ r, boolean order){
+		if(!order){
+			for(Criterion c : criterions){
+				if(Float.parseFloat(r.getScore()) <= Float.parseFloat(c.getStandrad())){
+					return c;
+				}
+			}
+		}else{
+			for(Criterion c : criterions){
+				if(Float.parseFloat(r.getScore()) >= Float.parseFloat(c.getStandrad())){
+					return c;
+				}
 			}
 		}
-		return null;
+		return criterions.get(0);
 	}
+	
 }
 
 enum ITEMENUM{
