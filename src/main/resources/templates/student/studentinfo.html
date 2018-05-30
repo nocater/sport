@@ -90,7 +90,7 @@
 	                      </h4>
 	                    </div>
 	                    <div th:id="'collapseTwo'+${tf.key}" class="panel-collapse collapse">
-	                      <div class="panel-body">
+	                      <div class="panel-body" th:style="'height:'+${(#lists.size(items)+1) * 40}+'px;'">
 	                      	<!-- 显示各项成绩 -->
 	                        <div class="default">
 	                        	<table style="width: 400px">
