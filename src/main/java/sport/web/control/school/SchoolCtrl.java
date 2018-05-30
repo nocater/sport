@@ -73,6 +73,7 @@ public class SchoolCtrl {
         int IsInsert = schoolservice.addSchool(school);
         
         model.addAttribute("isinsert",IsInsert);
+        model.addAttribute("message","添加成功！");
         
 		return "/school/schoolinfo";
 		

@@ -12,11 +12,8 @@
 <link th:href="@{/style/chen.css}" rel="stylesheet" />
 <script type="text/javascript">
    $(document).ready(function(){
-    /* $("#result") */
-      alert("already");
    
    });
-
 </script>
 
 
@@ -24,6 +21,12 @@
 
 
 <body>
+	<span th:if="${message}!=null">
+		<div class="alert alert-info alert-dismissible">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<span  th:text="${message}"></span>
+		</div>
+	</span>
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -85,11 +88,9 @@
 							<option value="其他">其他</option>
 						</select>
 					</div>
-					<div id="result"><h5 align = center >添加成功！</h5></div> 
 					
 					<div class="modal-footer">
-					    
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<a href="/sport/school"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></a>
 						<button type="submit" class="btn btn-primary">添加</button>
 					</div>
 				</form>
