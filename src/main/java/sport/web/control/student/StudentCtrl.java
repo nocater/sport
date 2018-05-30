@@ -73,7 +73,7 @@ public class StudentCtrl {
 		List<Class_> class_s = clasService.getClass_ByGradeId(grades.get(0).getId());
 		model.addAttribute("class_s",class_s);
 		
-		return "/student/studentlist";
+		return "student/studentlist";
 	}
 	
 	@RequestMapping(value="/info")
@@ -99,7 +99,7 @@ public class StudentCtrl {
 		
 		model.addAttribute("terms_fresults",terms_fresults);
 		model.addAttribute("message", message);
-		return "/student/studentinfo";
+		return "student/studentinfo";
 	}
 	
 	@PostMapping(value="/update")

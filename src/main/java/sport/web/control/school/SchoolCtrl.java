@@ -1,12 +1,12 @@
 package sport.web.control.school;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -28,7 +28,7 @@ public class SchoolCtrl {
 	private SchoolService schoolservice;
 	
 	//删除,修改
-	@RequestMapping("/edit")
+	@PostMapping("/edit")
 	public String edit(ModelMap model,
 			@RequestParam(value = "id", required=false) Integer id
 						){
@@ -37,22 +37,22 @@ public class SchoolCtrl {
 		
 		model.addAttribute("selectschool",selectschool);
 		//通过ID查询学校
-		return "/school/schoolinfoedit";
+		return "school/schoolinfoedit";
 		
 		
 	}
 	//增加学校页面
-	@RequestMapping("/addinfo")
+	@GetMapping("/addinfo")
 	public String index(  ModelMap model
 						){
 		/*schoolservice.*/
 		
-		return "/school/schoolinfo";
+		return "school/schoolinfo";
 		
 		
 	}
 	//增加学校页面
-	@RequestMapping("/add")
+	@PostMapping("/add")
 	public String addSchool(  ModelMap model,
 			@RequestParam(value = "name", required=false) String name,
 			@RequestParam(value = "address", required=false) String address,
@@ -75,12 +75,12 @@ public class SchoolCtrl {
         model.addAttribute("isinsert",IsInsert);
         model.addAttribute("message","添加成功！");
         
-		return "/school/schoolinfo";
+		return "school/schoolinfo";
 		
 	}
 	
 	//修改学校信息
-	@RequestMapping("/modify")
+	@PostMapping("/modify")
 	public String modifySchool(  ModelMap model,
 			@RequestParam(value = "id", required=false) Integer id,
 			@RequestParam(value = "name", required=false) String name,
@@ -105,7 +105,7 @@ public class SchoolCtrl {
         if(IsUpdate!=0){
         	model.addAttribute("message","添加成功！");
         }
-		return "/school/schoolinfo";
+		return "school/schoolinfo";
 		
 	}
 	
@@ -113,7 +113,7 @@ public class SchoolCtrl {
 	
 	
 	
-	@RequestMapping("")
+	@GetMapping("")
 	public String list(ModelMap model, 
 						@RequestParam(value="pageNum",required=false,defaultValue="1") Integer pageNum,
 						@RequestParam(value = "pageSize", required=false, defaultValue="10") Integer pageSize,
@@ -128,7 +128,7 @@ public class SchoolCtrl {
 		PageInfo page = new PageInfo(schools);
 		
 		model.addAttribute("page", page);
-		return "/school/schoollist";
+		return "school/schoollist";
 	}
 	
 	

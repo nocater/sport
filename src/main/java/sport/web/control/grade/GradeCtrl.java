@@ -55,7 +55,7 @@ public class GradeCtrl {
 	  List<Item> items = itemservice.getAllItems();
 	  model.addAttribute("items",items);
 	  
-	  return "/grade/gradeinfo";
+	  return "grade/gradeinfo";
 	}
 	
 	@RequestMapping("")
@@ -77,7 +77,7 @@ public class GradeCtrl {
 	    
 		PageInfo page = new PageInfo(grades);
 		model.addAttribute("page", page);
-		return "/grade/gradelist";
+		return "grade/gradelist";
 	}
 	
 	
@@ -127,7 +127,7 @@ public class GradeCtrl {
 	  List<Item> items = itemservice.getAllItems();
 	  model.addAttribute("items",items);
       
-	  return "/grade/gradeinfo";
+	  return "grade/gradeinfo";
 	}
 	
 	

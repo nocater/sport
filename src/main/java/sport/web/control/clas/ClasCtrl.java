@@ -32,7 +32,7 @@ public class ClasCtrl {
 		PageInfo page = new PageInfo(allClass);
 		model.addAttribute("page", page);
 		
-		return "/clas/claslist";
+		return "clas/claslist";
 		
 	}
 	
