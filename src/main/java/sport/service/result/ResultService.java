@@ -16,18 +16,13 @@ public interface ResultService {
 	List<Result_> getResult_byClas_id(Integer id);
 	
 	/***
-	 * 查询某一个学生的全部成绩
-	 * @param id
-	 * @return
-	 */
-	List<Result_> getResult_byStudent_id(Integer id);
-	/***
 	 * 查询班级某学期的成绩
 	 * @param clas_id
 	 * @param term
 	 * @return
 	 */
 	List<Student> getFresultsByClasWithTerm(Integer clas_id, Integer term);
+	
 	/***
 	 * 查询某一个学生的某一学期成绩
 	 * @param clas_id
@@ -35,17 +30,32 @@ public interface ResultService {
 	 * @return
 	 */
 	List<Fresult> getFresultWithTerm(Integer student_id, Integer term);
+	
+	/***
+	 * 查询某一个学生的全部成绩
+	 * @param id
+	 * @return
+	 */
+	List<Result_> getResult_byStudent_id(Integer id);
+	
+	/***
+	 * 根据班级和学期获取成绩
+	 * @param student_id
+	 * @return
+	 */
+	List<Result_> getResultByClassIdAndTerm(Map<String, Integer> map);
+	
 	/***
 	 * 查询一个学生有几个学期成绩
 	 * @param student_id
 	 * @return
 	 */
 	List<Integer> getTerms(Integer student_id);
+	
 	/***
-	 * 根据班级和学期获取成绩
-	 * @param student_id
+	 * 修改成绩信息
+	 * @param result
 	 * @return
 	 */
-	List<Fresult> getResultByClassIdAndTerm(Map<String, Integer> map);
-	
+	int updateResult(Result_ result);
 }

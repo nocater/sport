@@ -192,7 +192,7 @@ public interface Result_Mapper {
     List<Result_> selectByClassIdAndTerm(Map<String, Integer> map);
     
     @UpdateProvider(type=Result_SqlProvider.class, method="updateByPrimaryKeySelective")
-    int updateByPrimaryKeySelective(Result record);
+    int updateByPrimaryKeySelective(Result_ record);
 
     @Update({
         "update result",
@@ -203,5 +203,14 @@ public interface Result_Mapper {
           "type=#{type,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
-    int updateByPrimaryKey(Result record);
+    int updateByPrimaryKey(Result_ record);
+    
+    @Update({
+        "update result",
+        "set score = #{score,jdbcType=VARCHAR}",
+        "where student_id = #{student.id,jdbcType=INTEGER}",
+        " and term = #{term,jdbcType=INTEGER}",
+        " and item_id = #{item.id,jdbcType=INTEGER}"
+    })
+    int updateResult(Result_ record);
 }
