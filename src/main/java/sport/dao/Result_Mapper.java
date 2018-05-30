@@ -63,7 +63,12 @@ public interface Result_Mapper {
     //学生ID查询成绩
     @Select({
         "select * from result",
-        "where student_id = #{id,jdbcType=INTEGER}"
+        "where student_id = #{id,jdbcType=INTEGER}",
+        "   	and item_id in(",
+        "		    select item_id from grade_item where grade_id = (select grade_id from clas where id = (",
+        "																	select clas_id from student where id = #{id,jdbcType=INTEGER}) ",
+        "                                                            )",
+        "		)"
     })
     @Results({
 	   	@Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
@@ -82,7 +87,12 @@ public interface Result_Mapper {
     //学生ID查询某一学期成绩
     @Select({
         "select * from result",
-        "where student_id = #{id,jdbcType=INTEGER} and term = #{term, jdbcType=INTEGER}"
+        "where student_id = #{id,jdbcType=INTEGER} and term = #{term, jdbcType=INTEGER}",
+        "   	and item_id in(",
+        "		    select item_id from grade_item where grade_id = (select grade_id from clas where id = (",
+        "																	select clas_id from student where id = #{id,jdbcType=INTEGER}) ",
+        "                                                            )",
+        "		)"
     })
     @Results({
 	   	@Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
@@ -101,7 +111,12 @@ public interface Result_Mapper {
     //查询学生有几个学期成绩
     @Select({
         "select distinct(term) from result",
-        "where student_id = #{id,jdbcType=INTEGER}"
+        "where student_id = #{id,jdbcType=INTEGER}",
+        "   	and item_id in(",
+        "		    select item_id from grade_item where grade_id = (select grade_id from clas where id = (",
+        "																	select clas_id from student where id = #{id,jdbcType=INTEGER}) ",
+        "                                                            )",
+        "		)"
     })
     List<Integer> selectStudentTerms(Integer id);
     
@@ -114,7 +129,10 @@ public interface Result_Mapper {
         	"id",
         	"from student",
         	"where clas_id in (select id from clas where grade_id = #{id ,jdbcType=INTEGER})",
-        ")"
+        ")",
+        "   and item_id in(",
+        "		select item_id from grade_item where grade_id = #{id ,jdbcType=INTEGER}",
+        "	)"
 
     })
     
@@ -134,7 +152,7 @@ public interface Result_Mapper {
     List<Result_> selectByGradeId(Integer id);
     
     
-    //班级ID查询所有成绩
+    //班级ID查询所有成绩 带权限
     @Select({
 		"select",
         "id,item_id,student_id,score,term,type",
@@ -143,6 +161,9 @@ public interface Result_Mapper {
         	"id",
         	"from student",
         	"where clas_id = #{id,jdbcType=INTEGER}",
+        ")",
+        "     and item_id in(",
+        "		  select item_id from grade_item where grade_id = (select grade_id from clas where id = #{id,jdbcType=INTEGER})",
         ")"
 
     })
@@ -163,7 +184,7 @@ public interface Result_Mapper {
     List<Result_> selectByClassId(Integer id);
     
     
-  //班级ID和学期查询所有成绩
+    //班级ID和学期查询所有成绩
     @Select({
 		"select",
         "id,item_id,student_id,score,term,type",
@@ -172,7 +193,12 @@ public interface Result_Mapper {
         	"id",
         	"from student",
         	"where clas_id = #{id,jdbcType=INTEGER}",
-        ") and term = #{term,jdbcType=INTEGER}"
+        "	)",
+        "	and term = #{term,jdbcType=INTEGER}",
+        "   and item_id in(",
+        "		  select item_id from grade_item where grade_id = (select grade_id from clas where id = #{id,jdbcType=INTEGER})",
+        ")"
+
 
     })
     
