@@ -30,7 +30,7 @@ public class SchoolSqlProvider {
         }
         
         if (record.getTel() != null) {
-            sql.VALUES("tel", "#{tel,jdbcType=INTEGER}");
+            sql.VALUES("tel", "#{tel,jdbcType=VARCHAR}");
         }
         
         if (record.getEmail() != null) {
@@ -65,7 +65,7 @@ public class SchoolSqlProvider {
         }
         
         if (record.getTel() != null) {
-            sql.SET("tel = #{tel,jdbcType=INTEGER}");
+            sql.SET("tel = #{tel,jdbcType=VARCHAR}");
         }
         
         if (record.getEmail() != null) {

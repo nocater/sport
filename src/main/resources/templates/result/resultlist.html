@@ -45,6 +45,7 @@ function queryResult(){
 	
 	$("#query").submit(); 
 }
+
 </script>
 </head>
 
@@ -62,23 +63,23 @@ function queryResult(){
 					<div class="form-inline" style="float: left;width: 30%">
 						<label for="name">选择年级:</label> 
 						<select id="grade_select"
-							class="selectpicker" style="width: 40%" name="grade_id">
+							class="bs-select-form-control" style="width: 40%" name="grade_id">
 							<option th:each="g:${grades}" th:text="${g.name}"
-								th:value=${g.id}></option>
+								th:value=${g.id} th:selected="${g.id==grade_id}"></option>
 						</select>
 					</div>
 					<div class="form-inline" style="float: left ;width: 30%">
 						<label for="name">选择班级:</label> <select id="clas_id" class="selectpicker"
 							style="width: 40%" name="clas_id">
 							<option th:each="c:${class_s}" th:text="${c.name}"
-								th:value=${c.id}></option>
+								th:value=${c.id} th:selected="${c.id==clas_id}"></option>    
 						</select>
 					</div>
 					<div class="form-inline" style="float: left ;width: 20%">
 						<label for="name">学期:</label> <select id="term_id" class="selectpicker"
 							style="width: 40%" name="term_id">
-							<option  value=1>第一学期</option>
-							<option value=2>第二学期</option>		
+							<option  value=1 th:selected="${1==term_id}">第一学期</option>
+							<option value=2 th:selected="${2==term_id}">第二学期</option>		
 						</select>
 					</div>
 						
@@ -103,7 +104,7 @@ function queryResult(){
 							<tbody>
 								<tr th:each="s:${page.list}">
 									<td th:text="${s.name}"></td>
-									<td th:each="f:${s.fresults}" th:text="${f.score}"></td>
+									<td th:each="f:${s.fresults}" th:text="${f.score}+'('+${f.level}+')'"></td>
 									<td><a th:href="'/sport/student/info?id='+${s.id}">修改</a><td>
 								</tr>
 								<!-- <tr th:each="s:${page.list}">
