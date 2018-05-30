@@ -10,7 +10,9 @@ public interface CriterionService {
 	 * 查询项目的的标准
 	 * 根据项目ID 和 男女类型查询
 	 * @param itemid
+	 * @param gradeNum
+	 * @param type
 	 * @return
 	 */
-	List<Criterion> getCriterionByItemId(Integer itemid, int type);
+	List<Criterion> getCriterion(Integer itemid, Integer gradeNum, int type);
 }

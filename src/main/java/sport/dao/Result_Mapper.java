@@ -68,7 +68,8 @@ public interface Result_Mapper {
         "		    select item_id from grade_item where grade_id = (select grade_id from clas where id = (",
         "																	select clas_id from student where id = #{id,jdbcType=INTEGER}) ",
         "                                                            )",
-        "		)"
+        "		)",
+        "order by item_id",
     })
     @Results({
 	   	@Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
@@ -92,7 +93,8 @@ public interface Result_Mapper {
         "		    select item_id from grade_item where grade_id = (select grade_id from clas where id = (",
         "																	select clas_id from student where id = #{id,jdbcType=INTEGER}) ",
         "                                                            )",
-        "		)"
+        "		)",
+        "order by item_id",
     })
     @Results({
 	   	@Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
@@ -116,7 +118,8 @@ public interface Result_Mapper {
         "		    select item_id from grade_item where grade_id = (select grade_id from clas where id = (",
         "																	select clas_id from student where id = #{id,jdbcType=INTEGER}) ",
         "                                                            )",
-        "		)"
+        "		)",
+        "order by item_id",
     })
     List<Integer> selectStudentTerms(Integer id);
     
@@ -132,8 +135,8 @@ public interface Result_Mapper {
         ")",
         "   and item_id in(",
         "		select item_id from grade_item where grade_id = #{id ,jdbcType=INTEGER}",
-        "	)"
-
+        "	)",
+        "order by item_id",
     })
     
     @Results({
@@ -164,8 +167,8 @@ public interface Result_Mapper {
         ")",
         "     and item_id in(",
         "		  select item_id from grade_item where grade_id = (select grade_id from clas where id = #{id,jdbcType=INTEGER})",
-        ")"
-
+        ")",
+        "order by item_id",
     })
     
     @Results({
@@ -197,9 +200,8 @@ public interface Result_Mapper {
         "	and term = #{term,jdbcType=INTEGER}",
         "   and item_id in(",
         "		  select item_id from grade_item where grade_id = (select grade_id from clas where id = #{id,jdbcType=INTEGER})",
-        ")"
-
-
+        ")",
+        "order by item_id",
     })
     
     @Results({

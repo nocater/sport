@@ -108,6 +108,7 @@ public class StudentCtrl {
 								@RequestParam String modifyData,
 								RedirectAttributes attr
 								){
+		if(modifyData == null || modifyData.equals(""))return "redirect:/student";
 		System.out.println(modifyData);
 		String[] rs = modifyData.split(",");
 		for(String data : rs){

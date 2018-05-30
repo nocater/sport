@@ -72,7 +72,9 @@ public interface CriterionMapper {
         "select",
         "id, item_id, grade_num, type, standrad, levl, score",
         "from criterion",
-        "where item_id = #{itemid,jdbcType=INTEGER} and type=#{type, jdbcType=INTEGER}"
+        "where item_id=#{itemid,jdbcType=INTEGER} ",
+        "	and grade_num=#{gradeNum, jdbcType=VARCHAR}",
+        "	and type=#{type, jdbcType=INTEGER}",
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
@@ -84,5 +86,5 @@ public interface CriterionMapper {
         @Result(column="levl", property="levl", jdbcType=JdbcType.VARCHAR),
         @Result(column="score", property="score", jdbcType=JdbcType.VARCHAR)
     })
-    List<Criterion> selectByItemId(Map<String, Integer> map);
+    List<Criterion> selectNormal(Map<String, Integer> map);
 }

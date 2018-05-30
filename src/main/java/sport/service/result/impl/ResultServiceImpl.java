@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sport.bean.Fresult;
+import sport.bean.Item;
 import sport.bean.Result_;
 import sport.bean.Student;
 import sport.dao.Result_Mapper;
@@ -64,10 +65,34 @@ public class ResultServiceImpl implements ResultService{
 		List<Fresult> origin_fresults = CriterionUtil.dealStudentScore(student, onestuResults);
 		List<Fresult> fresults = new ArrayList<>();
 		//添加成绩学期信息
-		for(Fresult f : origin_fresults){
-			f.setTerm(term);
-			fresults.add(f);
+//		for(Fresult f : origin_fresults){
+//			f.setTerm(term);
+//			fresults.add(f);
+//		}
+		//判断是否有测试的项目没有成绩
+		for(Item item : student.getClass_().getGrade().getItems()){
+			Fresult fresult = null;
+			//如果有成绩项目就添加
+			for(Fresult f : origin_fresults){
+				if(f.getItem().getId() == item.getId()){
+					fresult = f;
+					fresult.setTerm(term);
+				}
+			}
+			//没有成绩就放一个空成绩
+			if(fresult==null){
+				fresult = new Fresult();
+				fresult.setItem(item);
+				fresult.setValue("0");
+				fresult.setAdd_score("0");
+				fresult.setLevel("无");
+				fresult.setScore("0");
+			}
+			
+			//将成绩放入目标List<Fresult>
+			fresults.add(fresult);
 		}
+		
 		return fresults;
 	}
 	@Override
