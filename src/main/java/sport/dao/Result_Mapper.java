@@ -119,7 +119,6 @@ public interface Result_Mapper {
         "																	select clas_id from student where id = #{id,jdbcType=INTEGER}) ",
         "                                                            )",
         "		)",
-        "order by item_id",
     })
     List<Integer> selectStudentTerms(Integer id);
     
