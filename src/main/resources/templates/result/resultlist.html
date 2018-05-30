@@ -59,36 +59,30 @@ function queryResult(){
 				<label for="default" class="col-sm-2 control-label">成绩信息</label>
 			</div>
 			<div class="modal-body">
-				<div class="form-inline">
-					<div class="form-inline" style="float: left;width: 30%">
+				<div class="form-inline" style="margin-left: 50px;">
 						<label for="name">选择年级:</label> 
 						<select id="grade_select"
-							class="bs-select-form-control" style="width: 40%" name="grade_id">
+							class="bs-select-form-control" name="grade_id">
 							<option th:each="g:${grades}" th:text="${g.name}"
 								th:value=${g.id} th:selected="${g.id==grade_id}"></option>
 						</select>
-					</div>
-					<div class="form-inline" style="float: left ;width: 30%">
-						<label for="name">选择班级:</label> <select id="clas_id" class="selectpicker"
-							style="width: 40%" name="clas_id">
+						<label for="name" style="margin-left: 20px;">选择班级:</label> <select id="clas_id" class="selectpicker"
+							name="clas_id">
 							<option th:each="c:${class_s}" th:text="${c.name}"
 								th:value=${c.id} th:selected="${c.id==clas_id}"></option>    
 						</select>
-					</div>
-					<div class="form-inline" style="float: left ;width: 20%">
-						<label for="name">学期:</label> <select id="term_id" class="selectpicker"
-							style="width: 40%" name="term_id">
+						<label for="name" style="margin-left: 20px;">学期:</label> <select id="term_id" class="selectpicker"
+							 name="term_id">
 							<option  value=1 th:selected="${1==term_id}">第一学期</option>
 							<option value=2 th:selected="${2==term_id}">第二学期</option>		
 						</select>
-					</div>
-						
+						<button type="button" style="margin-left: 20px;"
+						class="btn btn-primary btn-sm" onclick="queryResult()">查询</button>
 				</div>
 				
-				<button type="button"
-						class="btn btn-primary btn-sm" onclick="queryResult()">查询</button>
-			</div>
-			<form id="query" class="modalbody" action="/sport/result" method="POST">
+				
+				<!-- 列表页面 -->
+				<form id="query" class="modalbody" action="/sport/result" method="POST">
 					<input id="grad_id" type="hidden" name="grade_id" th:value="${grade_id}">
 					<input id="cla_id" type="hidden" name="clas_id" th:value="${clas_id}">
 					<input id="tem_id" type="hidden" name="term_id" th:value="${term_id}">
@@ -113,8 +107,9 @@ function queryResult(){
 									<td>修改<td>
 								</tr> -->
 					</table>
-				<div th:replace="~{page}"/>
-			</form>
+					<div th:replace="~{page}"/>
+				</form>
+			</div>
 		</div>
 	</div>
 	</div>
