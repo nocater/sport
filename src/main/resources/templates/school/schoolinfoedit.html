@@ -25,8 +25,8 @@
 				<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
 			</div>
 			<div class="modal-body">
-				<form class="modalbody" action="" method="POST">
-					<input type="hidden" name="id">
+				<form class="modalbody" action="/sport/school/modify" method="POST">
+					<input type="hidden" name="id" th:value="${selectschool.id}">
 					<div class="customtask">
 						<label for="taskname" class="col-sm-2 control-label">学校名称</label>
 						<div class="col-sm-10">
@@ -58,7 +58,7 @@
 					<div class="default">
 						<label for="default" class="col-sm-2 control-label">电话</label>
 						<div class="col-sm-10">
-							<input type="text" name="phone" th:value="${selectschool.tel}"
+							<input type="text" name="tel" th:value="${selectschool.tel}"
 								class="form-control">
 						</div>
 					</div>
@@ -71,7 +71,7 @@
 					</div> 
 					<div class="type">
 						<label for="type" class="col-sm-2 control-label">请选择学校类型:</label>
-						<select name="type" class="form-control" id="selecttype">
+						<select name="schooltype" class="form-control" id="selecttype">
 							<option value="小学" th:selected="${selectschool.schooltype=='小学'}">小学</option>
 							<option value="中学" th:selected="${selectschool.schooltype=='中学'}">中学</option>
 							<option value="高中" th:selected="${selectschool.schooltype=='高中'}">高中</option>
@@ -80,8 +80,10 @@
 						</select>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">删除</button>
-						<button type="button" class="btn btn-primary">修改</button>
+						<a class="nav-link" href="/sport/school">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				        </a>
+						<button type="submit" class="btn btn-primary">修改</button>
 					</div>
 				</form>
 			</div>

@@ -42,4 +42,10 @@ public class SchoolServiceImpl implements SchoolService{
 		
 		return IsInsert;
 	}
+	@Override
+	public int updateBySchoolId(School school) {
+		// TODO Auto-generated method stub
+		int updateByPrimaryKey = schoolmapper.updateByPrimaryKey(school);
+		return updateByPrimaryKey;
+	}
 }

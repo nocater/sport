@@ -79,6 +79,37 @@ public class SchoolCtrl {
 		
 	}
 	
+	//修改学校信息
+	@RequestMapping("/modify")
+	public String modifySchool(  ModelMap model,
+			@RequestParam(value = "id", required=false) Integer id,
+			@RequestParam(value = "name", required=false) String name,
+			@RequestParam(value = "address", required=false) String address,
+			@RequestParam(value = "zipcode", required=false) Integer   zipcode,
+			@RequestParam(value = "president", required=false) String president,
+			@RequestParam(value = "tel", required=false) String tel,
+			@RequestParam(value = "email", required=false) String email,
+			@RequestParam(value = "schooltype", required=false) String schooltype			     
+						){
+		School school=new School();
+		school.setId(id);
+		school.setName(name);
+		school.setAddress(address);	
+		school.setZipcode(zipcode);
+        school.setPresident(president);	
+        school.setTel(tel);
+        school.setEmail(email);	
+        school.setSchooltype(schooltype);
+        
+        int IsUpdate = schoolservice.updateBySchoolId(school);
+        if(IsUpdate!=0){
+        	model.addAttribute("message","添加成功！");
+        }
+		return "/school/schoolinfo";
+		
+	}
+	
+	
 	
 	
 	

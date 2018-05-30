@@ -91,6 +91,20 @@ public interface ItemMapper {
         @Result(column="name", property="name", jdbcType=JdbcType.VARCHAR)
     })
     Item selectByPrimaryKey(Integer id);
+    
+    @Select({
+        "select",
+        "id, name",
+        "from item"
+    })
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="name", property="name", jdbcType=JdbcType.VARCHAR)
+    })
+    List<Item> selectAllItems();
+    
+    
+    
 
     @UpdateProvider(type=ItemSqlProvider.class, method="updateByPrimaryKeySelective")
     int updateByPrimaryKeySelective(Item record);

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="tontent-type" content="text/html; charset=UTF-8">
+
+
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<script type="text/javascript" th:src="@{/script/jquery.js}"></script>
+<script type="text/javascript"
+	th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<link th:href="@{/style/chen.css}" rel="stylesheet" />
+<script type="text/javascript">
+	function Submit(){
+	var s="";
+	var obj=document.getElementsByName("selected");
+	for(var i=0; i<obj.length;i++){
+	if(obj[i].checked){
+	    s+=obj[i].value+",";
+	}
+	}
+	$("#selected_items").attr("value",s);
+	}
+</script>
+
+</head>
+<body>
+	<div class="modal-dialog" style="height: 500px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<label for="default" class="col-sm-2 control-label">年级测试项目信息</label>
+				<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+			</div>
+			<div class="modal-body">
+				<span th:if="${message}!=null">
+					<div class="alert alert-info alert-dismissible">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<span th:text="${message}"></span>
+					</div>
+				</span>
+				<form class="modalbody" action="/sport/grade/modify" method="POST">
+					<input type="hidden" name="grade_id" th:value="${grade.id}">
+					<input type="hidden" id="selected_items" name="selected_items">
+					<div class="customtask">
+						<label for="taskname" class="col-sm-2 control-label">学校名称:</label>
+						<span th:text="${school.name}"></span>
+					</div>
+					<div class="default">
+						<label for="default" class="col-sm-2 control-label">年级名称:</label>
+						<span th:text="${grade.name}"></span>
+					</div>
+					<div class="default" style="height: 300px;">
+						<label for="default" class="col-sm-2 control-label">测试项目:</label>
+						
+						<div th:each="i:${items}" >
+						   <label class="checkbox-inline" > <input type="checkbox" name="selected" 
+							th:id="'item_'+${i.id}" th:value="${i.id}" th:text="${i.name}"> </label>
+					    </div>
+					    <script th:inline="javascript">
+					    	var grade_items = [[${grade.items}]]
+					    	for(i=0;i<grade_items.length;i++){
+					    		console.log(grade_items[i].id+grade_items[i].name);
+					    		$("#item_"+grade_items[i].id).prop("checked",true);
+					    	}
+					    </script>
+					</div>
+				<div class="modal-footer" >
+				<a class="nav-link" href="/sport/grade">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</a>
+					<button type="submit" class="btn btn-primary" onclick="Submit()">修改</button>
+				</div>
+				</form>
+		</div>
+	</div>
+</body>
+</html>

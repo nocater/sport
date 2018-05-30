@@ -1,6 +1,7 @@
 package sport.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -116,4 +117,31 @@ public interface GradeMapper {
     })
     
     int updateByPrimaryKey(Grade record);
+    
+   /* 
+    @Update({
+    	"update grade_item"
+    	+ " set grade_id=#{grade_id,jdbcType=INTEGER},"
+    	+ " item_id=#{item_id,jdbcType=INTEGER} "
+    	
+    })
+    
+    int updateByGrade(Map<String, Integer> map);
+    */
+    
+    @Delete({
+        "delete from grade_item",
+        "where grade_id = #{id,jdbcType=INTEGER}"
+    })
+    int deleteByGradeId(Integer id);
+    
+    @Insert({
+        "insert into grade_item (grade_id, ",
+        "item_id)",
+        "values (#{grade_id,jdbcType=INTEGER}, ",
+        " #{ item_id,jdbcType=INTEGER})"
+    })
+    int insertToGrade_Item(Map<String, Integer> map);
+    
+      
 }

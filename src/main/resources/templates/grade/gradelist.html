@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="tontent-type" content="text/html; charset=UTF-8">
+
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<script type="text/javascript" th:src="@{/script/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<link th:href="@{/style/chen.css}" rel="stylesheet" />
+
+</head>
+
+<body>
+	<div class="modal-dialog " style="width:1000px"> 
+		<div class="modal-content">
+			<div class="modal-header">
+				<div th:replace="~{nav}"/>
+			</div>
+			<div class="modal-header">
+				<label for="default" class="col-sm-2 control-label">年级信息</label>
+			</div>
+			<div class="modal-body">
+				
+				<form id="query" class="modalbody" action="/school/list" method="POST">
+					<div class="list">
+				        <table class="table table-hover">
+							<thead>
+							  <tr>
+							    <th>年级</th>
+							    <th>测试项目</th>
+							    <th>操作</th>
+							  </tr>
+							</thead>
+							<tbody>
+								<tr>
+								<tr th:each="g:${page.list}">
+									 <td  th:text="${g.name}"></td>
+									<td >
+										<span th:each="i:${g.items}" th:text="${i.name}+','"></span>
+									</td>
+									<td><a th:href="'/sport/grade/info?id='+${g.id}">查看</a><td>	
+								</tr>
+							</tbody>
+					</table>
+				<div th:replace="~{page}"/>
+				</form>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -15,4 +15,6 @@ public interface SchoolService {
     
     public int addSchool(School school);
     
+    public int updateBySchoolId(School school);
+    
 }

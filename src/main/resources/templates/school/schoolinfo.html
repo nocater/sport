@@ -15,24 +15,23 @@
    
    });
 </script>
-
-
 </head>
 
 
 <body>
-	<span th:if="${message}!=null">
-		<div class="alert alert-info alert-dismissible">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<span  th:text="${message}"></span>
-		</div>
-	</span>
+
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<label for="default" class="col-sm-2 control-label">学校信息</label>
 				<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
 			</div>
+			<span th:if="${message}!=null">
+				<div class="alert alert-info alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<span th:text="${message}"></span>
+				</div>
+			</span>
 			<div class="modal-body">
 				<form class="modalbody" action="/sport/school/add" method="POST">
 					<input type="hidden" name="id">

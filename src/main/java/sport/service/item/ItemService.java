@@ -16,4 +16,7 @@ public interface ItemService {
 	 * @return
 	 */
 	public Item getItemById(Integer id);
+	
+	public List<Item> getAllItems();
+	
 }

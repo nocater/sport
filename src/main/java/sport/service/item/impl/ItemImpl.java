@@ -25,5 +25,12 @@ public class ItemImpl implements ItemService{
 		// TODO Auto-generated method stub
 		return itemmapper.selectByPrimaryKey(id);
 	}
+	@Override
+	public List<Item> getAllItems() {
+		// TODO Auto-generated method stub
+		List<Item> selectAllItems = itemmapper.selectAllItems();
+		
+		return selectAllItems;
+	}
 
 }
