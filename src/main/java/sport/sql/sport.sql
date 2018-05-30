@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : localhost
 Source Server Version : 50720
-Source Host           : localhost:3306
+Source Host           : 127.0.0.1:3306
 Source Database       : sport
 
 Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-05-29 13:59:54
+Date: 2018-05-30 11:26:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -95,7 +95,7 @@ INSERT INTO `clas` VALUES ('62', '11010', '1', '36');
 INSERT INTO `clas` VALUES ('63', '11020', '2', '37');
 INSERT INTO `clas` VALUES ('64', '1201', '1', '38');
 INSERT INTO `clas` VALUES ('65', '1127', '27', '39');
-INSERT INTO `clas` VALUES ('66', '1128', '28', '39');
+INSERT INTO `clas` VALUES ('66', '1128', '28', '40');
 INSERT INTO `clas` VALUES ('67', '4201', '1', '40');
 INSERT INTO `clas` VALUES ('68', '4202', '2', '40');
 INSERT INTO `clas` VALUES ('69', '4301', '1', '41');
@@ -118,7 +118,7 @@ CREATE TABLE `criterion` (
   PRIMARY KEY (`id`),
   KEY `item_id` (`item_id`),
   CONSTRAINT `criterion_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of criterion
@@ -203,6 +203,86 @@ INSERT INTO `criterion` VALUES ('77', '14', '11', '130', '不及格', '40', '1')
 INSERT INTO `criterion` VALUES ('78', '14', '11', '125', '不及格', '30', '1');
 INSERT INTO `criterion` VALUES ('79', '14', '11', '120', '不及格', '20', '1');
 INSERT INTO `criterion` VALUES ('80', '14', '11', '115', '不及格', '10', '1');
+INSERT INTO `criterion` VALUES ('81', '5', '11', '1700', '优秀', '100', '0');
+INSERT INTO `criterion` VALUES ('82', '5', '11', '1600', '优秀', '95', '0');
+INSERT INTO `criterion` VALUES ('83', '5', '11', '1500', '优秀', '90', '0');
+INSERT INTO `criterion` VALUES ('84', '5', '11', '1400', '良好', '85', '0');
+INSERT INTO `criterion` VALUES ('85', '5', '11', '1300', '良好', '80', '0');
+INSERT INTO `criterion` VALUES ('86', '5', '11', '1240', '及格', '78', '0');
+INSERT INTO `criterion` VALUES ('87', '5', '11', '1180', '及格', '76', '0');
+INSERT INTO `criterion` VALUES ('88', '5', '11', '1120', '及格', '74', '0');
+INSERT INTO `criterion` VALUES ('89', '5', '11', '1060', '及格', '72', '0');
+INSERT INTO `criterion` VALUES ('90', '5', '11', '1000', '及格', '70', '0');
+INSERT INTO `criterion` VALUES ('91', '5', '11', '940', '及格', '68', '0');
+INSERT INTO `criterion` VALUES ('92', '5', '11', '880', '及格', '66', '0');
+INSERT INTO `criterion` VALUES ('93', '5', '11', '820', '及格', '64', '0');
+INSERT INTO `criterion` VALUES ('94', '5', '11', '760', '及格', '62', '0');
+INSERT INTO `criterion` VALUES ('95', '5', '11', '700', '及格', '60', '0');
+INSERT INTO `criterion` VALUES ('96', '5', '11', '660', '不及格', '50', '0');
+INSERT INTO `criterion` VALUES ('97', '5', '11', '620', '不及格', '40', '0');
+INSERT INTO `criterion` VALUES ('98', '5', '11', '580', '不及格', '30', '0');
+INSERT INTO `criterion` VALUES ('99', '5', '11', '540', '不及格', '20', '0');
+INSERT INTO `criterion` VALUES ('100', '5', '11', '500', '不及格', '10', '0');
+INSERT INTO `criterion` VALUES ('101', '5', '11', '1400', '优秀', '100', '1');
+INSERT INTO `criterion` VALUES ('102', '5', '11', '1300', '优秀', '95', '1');
+INSERT INTO `criterion` VALUES ('103', '5', '11', '1200', '优秀', '90', '1');
+INSERT INTO `criterion` VALUES ('104', '5', '11', '1100', '良好', '85', '1');
+INSERT INTO `criterion` VALUES ('105', '5', '11', '1000', '良好', '80', '1');
+INSERT INTO `criterion` VALUES ('106', '5', '11', '960', '及格', '78', '1');
+INSERT INTO `criterion` VALUES ('107', '5', '11', '920', '及格', '76', '1');
+INSERT INTO `criterion` VALUES ('108', '5', '11', '880', '及格', '74', '1');
+INSERT INTO `criterion` VALUES ('109', '5', '11', '840', '及格', '72', '1');
+INSERT INTO `criterion` VALUES ('110', '5', '11', '800', '及格', '70', '1');
+INSERT INTO `criterion` VALUES ('111', '5', '11', '760', '及格', '68', '1');
+INSERT INTO `criterion` VALUES ('112', '5', '11', '720', '及格', '66', '1');
+INSERT INTO `criterion` VALUES ('113', '5', '11', '680', '及格', '64', '1');
+INSERT INTO `criterion` VALUES ('114', '5', '11', '640', '及格', '62', '1');
+INSERT INTO `criterion` VALUES ('115', '5', '11', '600', '及格', '60', '1');
+INSERT INTO `criterion` VALUES ('116', '5', '11', '580', '不及格', '50', '1');
+INSERT INTO `criterion` VALUES ('117', '5', '11', '560', '不及格', '40', '1');
+INSERT INTO `criterion` VALUES ('118', '5', '11', '540', '不及格', '30', '1');
+INSERT INTO `criterion` VALUES ('119', '5', '11', '520', '不及格', '20', '1');
+INSERT INTO `criterion` VALUES ('120', '5', '11', '500', '不及格', '10', '1');
+INSERT INTO `criterion` VALUES ('121', '7', '11', '10.2', '优秀', '100', '0');
+INSERT INTO `criterion` VALUES ('122', '7', '11', '10.3', '优秀', '95', '0');
+INSERT INTO `criterion` VALUES ('123', '7', '11', '10.4', '优秀', '90', '0');
+INSERT INTO `criterion` VALUES ('124', '7', '11', '10.5', '良好', '85', '0');
+INSERT INTO `criterion` VALUES ('125', '7', '11', '10.6', '良好', '80', '0');
+INSERT INTO `criterion` VALUES ('126', '7', '11', '10.8', '及格', '78', '0');
+INSERT INTO `criterion` VALUES ('127', '7', '11', '11', '及格', '76', '0');
+INSERT INTO `criterion` VALUES ('128', '7', '11', '11.2', '及格', '74', '0');
+INSERT INTO `criterion` VALUES ('129', '7', '11', '11.4', '及格', '72', '0');
+INSERT INTO `criterion` VALUES ('130', '7', '11', '11.6', '及格', '70', '0');
+INSERT INTO `criterion` VALUES ('131', '7', '11', '11.8', '及格', '68', '0');
+INSERT INTO `criterion` VALUES ('132', '7', '11', '12', '及格', '66', '0');
+INSERT INTO `criterion` VALUES ('133', '7', '11', '12.2', '及格', '64', '0');
+INSERT INTO `criterion` VALUES ('134', '7', '11', '12.4', '及格', '62', '0');
+INSERT INTO `criterion` VALUES ('135', '7', '11', '12.6', '及格', '60', '0');
+INSERT INTO `criterion` VALUES ('136', '7', '11', '12.8', '不及格', '50', '0');
+INSERT INTO `criterion` VALUES ('137', '7', '11', '13', '不及格', '40', '0');
+INSERT INTO `criterion` VALUES ('138', '7', '11', '13.2', '不及格', '30', '0');
+INSERT INTO `criterion` VALUES ('139', '7', '11', '13.4', '不及格', '20', '0');
+INSERT INTO `criterion` VALUES ('140', '7', '11', '13.6', '不及格', '10', '0');
+INSERT INTO `criterion` VALUES ('141', '7', '11', '11', '优秀', '100', '1');
+INSERT INTO `criterion` VALUES ('142', '7', '11', '11.1', '优秀', '95', '1');
+INSERT INTO `criterion` VALUES ('143', '7', '11', '11.2', '优秀', '90', '1');
+INSERT INTO `criterion` VALUES ('144', '7', '11', '11.5', '良好', '85', '1');
+INSERT INTO `criterion` VALUES ('145', '7', '11', '11.8', '良好', '80', '1');
+INSERT INTO `criterion` VALUES ('146', '7', '11', '12', '及格', '78', '1');
+INSERT INTO `criterion` VALUES ('147', '7', '11', '12.2', '及格', '76', '1');
+INSERT INTO `criterion` VALUES ('148', '7', '11', '12.4', '及格', '74', '1');
+INSERT INTO `criterion` VALUES ('149', '7', '11', '12.6', '及格', '72', '1');
+INSERT INTO `criterion` VALUES ('150', '7', '11', '12.8', '及格', '70', '1');
+INSERT INTO `criterion` VALUES ('151', '7', '11', '13', '及格', '68', '1');
+INSERT INTO `criterion` VALUES ('152', '7', '11', '13.2', '及格', '66', '1');
+INSERT INTO `criterion` VALUES ('153', '7', '11', '13.4', '及格', '64', '1');
+INSERT INTO `criterion` VALUES ('154', '7', '11', '13.6', '及格', '62', '1');
+INSERT INTO `criterion` VALUES ('155', '7', '11', '13.8', '及格', '60', '1');
+INSERT INTO `criterion` VALUES ('156', '7', '11', '14', '不及格', '50', '1');
+INSERT INTO `criterion` VALUES ('157', '7', '11', '14.2', '不及格', '40', '1');
+INSERT INTO `criterion` VALUES ('158', '7', '11', '14.4', '不及格', '30', '1');
+INSERT INTO `criterion` VALUES ('159', '7', '11', '14.6', '不及格', '20', '1');
+INSERT INTO `criterion` VALUES ('160', '7', '11', '14.8', '不及格', '10', '1');
 
 -- ----------------------------
 -- Table structure for env
@@ -268,13 +348,16 @@ CREATE TABLE `grade_item` (
   KEY `item_id` (`item_id`),
   CONSTRAINT `grade_item_ibfk_1` FOREIGN KEY (`grade_id`) REFERENCES `grade` (`id`),
   CONSTRAINT `grade_item_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of grade_item
 -- ----------------------------
 INSERT INTO `grade_item` VALUES ('1', '39', '11');
-INSERT INTO `grade_item` VALUES ('13', '39', '14');
+INSERT INTO `grade_item` VALUES ('13', '40', '5');
+INSERT INTO `grade_item` VALUES ('14', '39', '5');
+INSERT INTO `grade_item` VALUES ('15', '39', '7');
+INSERT INTO `grade_item` VALUES ('16', '39', '14');
 
 -- ----------------------------
 -- Table structure for item
@@ -346,7 +429,7 @@ CREATE TABLE `result` (
   KEY `student_id` (`student_id`),
   CONSTRAINT `result_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`),
   CONSTRAINT `result_ibfk_3` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of result
@@ -375,6 +458,30 @@ INSERT INTO `result` VALUES ('66', '14', '3', '180', '2', null);
 INSERT INTO `result` VALUES ('67', '14', '4', '210', '2', null);
 INSERT INTO `result` VALUES ('68', '14', '5', '170', '2', null);
 INSERT INTO `result` VALUES ('69', '14', '6', '130', '2', null);
+INSERT INTO `result` VALUES ('70', '5', '1', '1700', '1', null);
+INSERT INTO `result` VALUES ('71', '5', '2', '1400', '1', null);
+INSERT INTO `result` VALUES ('72', '5', '3', '1100', '1', null);
+INSERT INTO `result` VALUES ('73', '5', '4', '1400', '1', null);
+INSERT INTO `result` VALUES ('74', '5', '5', '1100', '1', null);
+INSERT INTO `result` VALUES ('75', '5', '6', '960', '1', null);
+INSERT INTO `result` VALUES ('76', '5', '1', '1800', '2', null);
+INSERT INTO `result` VALUES ('77', '5', '2', '1500', '2', null);
+INSERT INTO `result` VALUES ('78', '5', '3', '1200', '2', null);
+INSERT INTO `result` VALUES ('79', '5', '4', '1500', '2', null);
+INSERT INTO `result` VALUES ('80', '5', '5', '1200', '2', null);
+INSERT INTO `result` VALUES ('81', '5', '6', '980', '2', null);
+INSERT INTO `result` VALUES ('82', '7', '1', '10.1', '1', null);
+INSERT INTO `result` VALUES ('83', '7', '2', '11.3', '1', null);
+INSERT INTO `result` VALUES ('84', '7', '3', '11.8', '1', null);
+INSERT INTO `result` VALUES ('85', '7', '4', '11.1', '1', null);
+INSERT INTO `result` VALUES ('86', '7', '5', '11.2', '1', null);
+INSERT INTO `result` VALUES ('87', '7', '6', '12.9', '1', null);
+INSERT INTO `result` VALUES ('88', '7', '1', '10.5', '2', null);
+INSERT INTO `result` VALUES ('89', '7', '2', '11.2', '2', null);
+INSERT INTO `result` VALUES ('90', '7', '3', '11.5', '2', null);
+INSERT INTO `result` VALUES ('91', '7', '4', '11.3', '2', null);
+INSERT INTO `result` VALUES ('92', '7', '5', '11.5', '2', null);
+INSERT INTO `result` VALUES ('93', '7', '6', '12.5', '2', null);
 
 -- ----------------------------
 -- Table structure for role
@@ -452,10 +559,10 @@ INSERT INTO `student` VALUES ('5', '张三', '女', '2004-01-23', '005', '1', '1
 INSERT INTO `student` VALUES ('6', '张四', '女', '2005-01-01', '006', '1', '1233', '1', '65');
 INSERT INTO `student` VALUES ('7', '李三', '女', '2006-01-06', '007', '1', '1123', '1', '66');
 INSERT INTO `student` VALUES ('8', '李四', '女', '2006-02-21', '008', '1', '1345', '1', '66');
-INSERT INTO `student` VALUES ('9', '张五', '男', '2004-04-04', '009', '1', '1456', '1', '67');
+INSERT INTO `student` VALUES ('9', '张五', '女', '2004-04-04', '009', '1', '1456', '1', '67');
 INSERT INTO `student` VALUES ('10', '张六', '男', '2004-03-05', '010', '1', '1236', '1', '67');
-INSERT INTO `student` VALUES ('11', '李五', '女', '2004-02-08', '011', '1', '1346', '1', '67');
-INSERT INTO `student` VALUES ('12', '李六', '女', '2004-05-09', '012', '1', '2134', '1', '67');
+INSERT INTO `student` VALUES ('11', '李五', '男', '2004-02-08', '011', '1', '1346', '1', '67');
+INSERT INTO `student` VALUES ('12', '李六', '男', '2004-05-09', '012', '1', '2134', '1', '67');
 INSERT INTO `student` VALUES ('13', '张七', '男', '2003-02-03', '013', '1', '1093', '1', '68');
 INSERT INTO `student` VALUES ('14', '张八', '男', '2003-09-09', '014', '1', '5423', '1', '68');
 INSERT INTO `student` VALUES ('15', '李七', '女', '2003-12-12', '015', '1', '2321', '1', '68');
