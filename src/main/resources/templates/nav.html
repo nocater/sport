@@ -14,6 +14,7 @@
 		<div th:fragment="nav">
 			<div class="modal-header">
 		    	欢迎,<span th:text="${session.LOGIN_ACCOUNT.realName}+'('+${session.LOGIN_ACCOUNT.role.name}+')'"></span>
+  				  <a href="/sport/signout">退出</a>
 		    </div>
 			<nav class="navbar navbar-light bg-faded" style="margin-bottom: 0px;margin-top: 15px">
 			  <!-- <a class="navbar-brand" href="#">Navbar</a> -->

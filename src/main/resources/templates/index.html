@@ -9,7 +9,8 @@
 
 <script type="text/javascript"
 	th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-<link th:href="@{/style/chen.css}" rel="stylesheet" />
+<link th:href="@{/style/chen.css}" rel="stylesheet" /><!-- 
+<link th:href="@{/style/main.css}" rel="stylesheet" /> -->
 <script type="text/javascript">
    
 $(document).ready(function(){
@@ -59,7 +60,30 @@ function queryResult(){
 				<label for="default" class="col-sm-2 control-label">公告</label>
 			</div>
 			<div class="modal-body">
-				## 欢迎页面
+				<div class="form-inline" style="background-color: #2e3842">
+					<table>
+						<tbody>
+							<tr>
+								<td ><img th:src="@{/images/pic01.jpg}" alt="" width="468px;"/></td>
+								<td style="width:460px; text-align: center;"><span style="color: white; font-size: 20px;">陈帅</span></td>
+							</tr>
+							<tr>
+								<td style="width:460px; text-align: center;"><span style="color: white; font-size: 20px;">朱静</span></td>
+								<td ><img th:src="@{/images/pic02.jpg}" alt="" width="468px;"/></td>
+							</tr>
+							<tr>
+								<td ><img th:src="@{/images/pic03.jpg}" alt="" width="468px;"/></td>
+								<td style="width:460px; text-align: center;"><span style="color: white; font-size: 20px;">梁兵兵</span></td>
+							</tr>
+							<tr>
+								<td style="width:460px; text-align: center;"><span style="color: white; font-size: 20px;">魏晓磊</span></td>
+								<td ><img th:src="@{/images/pic04.jpg}" alt="" width="468px;"/></td>
+							</tr><tr>
+								<td ><img th:src="@{/images/pic05.jpg}" alt="" width="468px;"/></td>
+								<td style="width:460px; text-align: center;"><span style="color: white; font-size: 20px;">刘俊</span></td>
+							</tr>
+						</tbody>
+					</table>
 			</div>
 		</div>
 	</div>
