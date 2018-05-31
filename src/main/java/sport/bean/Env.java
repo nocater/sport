@@ -1,5 +1,7 @@
 package sport.bean;
 
+import java.sql.Date;
+
 public class Env {
     private Integer id;
 	private Class_ class_;
@@ -15,7 +17,15 @@ public class Env {
 
     private String name;
 
-    private String time;
+    public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	private Date time;
 
     private String place;
 
@@ -41,13 +51,7 @@ public class Env {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getTime() {
-        return time;
-    }
 
-    public void setTime(String time) {
-        this.time = time == null ? null : time.trim();
-    }
 
     public String getPlace() {
         return place;

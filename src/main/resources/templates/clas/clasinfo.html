@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="tontent-type" content="text/html; charset=UTF-8">
+
+
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<script type="text/javascript" th:src="@{/script/jquery.js}"></script>
+<script type="text/javascript"
+	th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<link th:href="@{/style/chen.css}" rel="stylesheet" />
+
+<!-- <link href="../../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="../../static/script/jquery.js"></script>
+	<script type="text/javascript" src="../../static/bootstrap/js/bootstrap.min.js"></script>
+	<link th:href="../../static/style/chen.css" rel="stylesheet"/> -->
+</head>
+<body>
+	<span th:if="${message}!=null">
+		<div class="alert alert-info alert-dismissible">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<span  th:text="${message}"></span>
+		</div>
+	</span>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<label for="default" class="col-sm-2 control-label">班级测试基本信息</label>
+				<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+			</div>
+			<div class="modal-body">
+				<form class="modalbody" action="#" method="POST">
+					<input type="hidden" name="clas_id" >
+					<input type="hidden" id="modifyData" name="modifyData">
+					<div class="default">
+						<label for="taskname" class="col-sm-2 control-label">班级信息</label>
+						<div class="col-sm-10">
+							<!-- <input type="text" class="form-control" name="name"
+								placeholder="请输入学校名称"> -->
+								
+							<span th:text="${clas.grade.school.name}+'  '+${clas.grade.name}"></span>
+							<!-- <span th:text="${student?.class_.grade.school.name}+'    '+
+											${student?.class_.grade.name}+'    '+
+											${student?.class_.name}+'班'
+							"></span> -->
+						</div>
+					</div>
+					<div class="default">
+						<label for="default" class="col-sm-2 control-label">班级名称</label>
+						<div class="col-sm-10">
+							<span th:text="${clas.name}"></span>
+						</div>
+					</div>
+					<div class="default">
+						<label for="default" class="col-sm-2 control-label">班级编号</label>
+						<div class="col-sm-10">
+							<span th:text="${clas.num}"></span>
+						</div>
+					</div>	
+		             <div style="height: 300px">
+					 <div class="modal-header">
+						<label for="default" class="col-sm-2 control-label">测试信息</label>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					
+					 <div class="default">
+						<table style="width: 400px">
+							<thead>
+								<tr>
+									<th><label for="default" class="control-label">项目</label></th>
+									<th><label for="default" class="control-label">测试场地</label></th>
+									<th><label for="default" class="control-label">测试时间</label></th>
+									<th><label for="default" class="control-label">设备</label></th>
+									<th><label for="default" class="control-label">测试模式</label></th>
+								</tr>
+							</thead>
+							<tbody>
+								 <tr th:each="i:${map}">
+	                        				<td><label id="item_name" for="default" class="control-label" value="${i.key.id}" th:text="${i.key.name}"></label></td>
+                                            <td><span ><input id="place" type="text" th:value="${i.value.name}" style="width: 65px"></span></td>
+                                            <td><span><input id="date" type="text" th:value="abc" style="width: 65px"></span></td>
+                                            <td><span><input id="equipment" type="text" th:value="abc" style="width: 65px"></span></td>
+	                        				<td><span><input id="model" type="text" th:value="abc" style="width: 65px"></span></td>
+	                        	</tr>
+							</tbody>
+						</table>
+						</div>	
+					</div>
+					<div class="modal-footer">
+						<a href="/sport/result"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></a>
+						<button type="submit" class="btn btn-primary" onclick="Submit()">提交</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

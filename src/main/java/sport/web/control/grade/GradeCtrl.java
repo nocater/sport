@@ -17,9 +17,12 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 import sport.bean.Account;
+import sport.bean.Class_;
 import sport.bean.Grade;
 import sport.bean.Item;
 import sport.bean.School;
+import sport.service.class_.Class_Service;
+import sport.service.env.EnvService;
 import sport.service.grade.GradeService;
 import sport.service.item.ItemService;
 import sport.service.school.SchoolService;
@@ -38,6 +41,10 @@ public class GradeCtrl {
 	private GradeService gradeservice;
 	@Autowired
 	private ItemService itemservice;
+	@Autowired
+	private EnvService envService;
+	@Autowired
+	private Class_Service clasService;
 	
 	@RequestMapping("/info")
 	public String index(
@@ -127,6 +134,15 @@ public class GradeCtrl {
 	  List<Item> items = itemservice.getAllItems();
 	  model.addAttribute("items",items);
       
+	  
+	  //env update
+	  // delete env by each class of this grade 
+	  List<Class_> clas_s = clasService.getClass_ByGradeId(grade_id);
+	  for(Class_ c : clas_s){
+		  envService.deleteByClas(c.getId());
+		  envService.insertByClas(itemids, c);
+	  }
+	  
 	  return "grade/gradeinfo";
 	}
 	

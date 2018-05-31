@@ -12,7 +12,7 @@ public interface Class_Service {
 	List<Class_> getAllClass();
 	
 	
-	
+	Class_ getClassById(Integer id);
 	
 
 }

@@ -40,8 +40,8 @@
 								<tr th:each="t:${page.list}">
 									<td  th:text="${t.name}"></td>
 									 <td  th:text="${t.num}"></td>
-									<td  th:text="${t.grade.name}"></td>
-									<td><a th:href="'/sport/school/edit?id='+${t.id}">查看</a><td>
+									<td  th:text="${t.grade.name}"></td>      <!-- ?id='+${t.id}" -->
+									<td><a th:href="'/sport/clas/info?id='+${t.id}">查看</a><td>
 									<!-- <td><a th:href="'/sport/student/info?id='+${t.id}">查看</a><td>	 -->	
 								</tr>
 							</tbody>

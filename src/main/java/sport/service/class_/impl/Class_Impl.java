@@ -28,5 +28,12 @@ public class Class_Impl implements Class_Service {
 		List<Class_> selectAll = class_mapper.selectAll();
 		return selectAll;
 	}
+	
+	@Override
+	public Class_ getClassById(Integer id) {
+		// TODO Auto-generated method stub
+		Class_ selectByPrimaryKey = class_mapper.selectByPrimaryKey(id);
+		return selectByPrimaryKey;
+	}
 
 }

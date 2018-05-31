@@ -174,8 +174,11 @@ public class StudentCtrl {
 		return "student/studentedit";
 	}
 	
-	
-	
-	
-	
+	@RequestMapping(value="/loading")
+	public String loading(
+			  ModelMap model
+								){
+		
+		return "/student/studentmodel";
+	}
 }
