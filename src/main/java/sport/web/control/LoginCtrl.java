@@ -17,6 +17,7 @@ import sport.service.account.AccountService;
 public class LoginCtrl {
 	@Autowired
 	private AccountService accountService;
+	
 	/***
 	 * 登录
 	 * session 写入DEMO
@@ -35,12 +36,29 @@ public class LoginCtrl {
 		Account account = accountService.login(name, password);
 		if(account!=null){
 			session.setAttribute("LOGIN_ACCOUNT", account);
-			return "redirect:/school";
+			return "redirect:/";
 		}else{
 			model.addAttribute("message", "登录失败");
 			System.out.println(name+"登录失败！");
 			return "login";
 		}
+	}
+	
+	/***
+	 * 登录
+	 * session 写入DEMO
+	 * @param name
+	 * @param password
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="/signout")
+	public String signout(
+						HttpSession session,
+						ModelMap model
+						){
+		session.removeAttribute("LOGIN_ACCOUNT");
+		return "login";
 	}
 	
 	/***
