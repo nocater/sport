@@ -28,7 +28,7 @@ public class SchoolCtrl {
 	private SchoolService schoolservice;
 	
 	//删除,修改
-	@PostMapping("/edit")
+	@RequestMapping("/edit")
 	public String edit(ModelMap model,
 			@RequestParam(value = "id", required=false) Integer id
 						){
@@ -42,7 +42,7 @@ public class SchoolCtrl {
 		
 	}
 	//增加学校页面
-	@GetMapping("/addinfo")
+	@RequestMapping("/addinfo")
 	public String index(  ModelMap model
 						){
 		/*schoolservice.*/
@@ -80,7 +80,7 @@ public class SchoolCtrl {
 	}
 	
 	//修改学校信息
-	@PostMapping("/modify")
+	@RequestMapping("/modify")
 	public String modifySchool(  ModelMap model,
 			@RequestParam(value = "id", required=false) Integer id,
 			@RequestParam(value = "name", required=false) String name,
@@ -112,8 +112,7 @@ public class SchoolCtrl {
 	
 	
 	
-	
-	@GetMapping("")
+	@RequestMapping("")
 	public String list(ModelMap model, 
 						@RequestParam(value="pageNum",required=false,defaultValue="1") Integer pageNum,
 						@RequestParam(value = "pageSize", required=false, defaultValue="10") Integer pageSize,

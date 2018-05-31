@@ -53,6 +53,15 @@ public class StudentServiceImpl implements Studentservice {
 //		student.setResults(rs);
 		return student;
 	}
+
+	@Override
+	public Integer updateStudent(Student student) {
+		// TODO Auto-generated method stub
+		
+		int updateByPrimaryKey = studentMapper.updateByPrimaryKey(student);
+		
+		return updateByPrimaryKey;
+	}
 	
 	
 }

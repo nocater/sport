@@ -19,6 +19,12 @@
 			<div class="modal-header">
 				<label for="default" class="col-sm-2 control-label">学生信息</label>
 			</div>
+			<span th:if="${message}!=null">
+				<div class="alert alert-info alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<span th:text="${message}"></span>
+				</div>
+			</span>
 			<div class="modal-body">
 			    <div class="form-inline" style="margin-left: 50px;">
 						<label for="name">选择年级:</label> 
@@ -58,7 +64,7 @@
 									<td  th:text="${s.class_.name}"></td>
 									<td  th:text="${s.sex}"></td>
 									<td  th:text="${s.adress}"></td>
-									<td><a th:href="'/sport/student/info?id='+${s.id}">查看</a><td>
+									<td><a th:href="'/sport/student/edit?id='+${s.id}">查看</a><td>
 								</tr>
 							</tbody>
 					</table>

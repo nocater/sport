@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="tontent-type" content="text/html; charset=UTF-8">
+
+
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<script type="text/javascript" th:src="@{/script/jquery.js}"></script>
+<script type="text/javascript"
+	th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<link th:href="@{/style/chen.css}" rel="stylesheet" />
+<style>
+        .fileinput-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .fileinput-button input{
+            position:absolute;
+            right: 0px;
+            top: 0px;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+        }
+    </style>
+</head>
+<body>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<label for="default" class="col-sm-2 control-label">学生信息模板</label>
+			</div>
+			<div class="modal-body">
+				<div><b>学生信息模板下载:</b>
+				<!-- <span><button type="button"  data-dismiss="modal" >下载模板</button></span> -->
+				  <span class="btn btn-success fileinput-button"> <a ><span>下载</span></a>
+					</span>
+				</div>
+			    
+			</div>
+			<div class="modal-body">
+				<div><b>学生信息导入:</b>
+				  <!--   <span><input  type="file" data-dismiss="modal" title="请选择上传文件"></span> -->
+					<span class="btn btn-success fileinput-button"> <span>上传</span>
+						<input type="file">
+					</span>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -8,4 +8,7 @@ public interface Studentservice {
 	List<Student> getStudentsByClas(Integer clas_id);
 	
 	Student getStudentByStuId(Integer student_id);
+	
+	Integer updateStudent(Student student);
+	
 }

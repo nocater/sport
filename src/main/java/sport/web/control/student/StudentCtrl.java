@@ -131,4 +131,51 @@ public class StudentCtrl {
 		attr.addAttribute("message", "修改成功！");
 		return "redirect:/student/info";
 	}
+	
+	@RequestMapping(value="/edit")
+	public String updateinfo(
+			               ModelMap model,
+						   @RequestParam Integer id
+								){
+		Student student = studentService.getStudentByStuId(id);
+		
+		model.addAttribute("student",student);
+		
+		return "student/studentedit";
+	}
+	@RequestMapping(value="/modify")
+	public String modifyinfo(
+			               ModelMap model,
+						   @RequestParam Integer student_id,
+						   @RequestParam String sex,
+						   @RequestParam String address
+								){
+		
+		String se=sex.replace(",", "");
+		
+		Student student = studentService.getStudentByStuId(student_id);
+		
+		student.setAdress(address);
+		
+		student.setSex(se);
+		
+		Integer updateStudent = studentService.updateStudent(student);
+		
+		if(updateStudent!=0){
+			
+			
+			model.addAttribute("message","修改成功！");
+		}else{
+			model.addAttribute("message","修改失败！");
+		}
+		
+		model.addAttribute("student",student);
+		
+		return "student/studentedit";
+	}
+	
+	
+	
+	
+	
 }
